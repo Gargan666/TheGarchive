@@ -3,7 +3,7 @@ format_version: 1.0
 
 line_gap: 1
 
-space_width: 2
+space_width: 6
 
 creator_name: Unknown
 font_family_name: Gargling-fried
@@ -18,10 +18,10 @@ last_exported_path: C:\Gargan_Website\images\fonts\Gargling-fried.ttf
 num_glyphs: 94
 glyphs:
 	33:
-		advance: 3
+		advance: 4
 		auto_update_advance: true
 		auto_advance_amount: 1
-		pixels: -1 0, -1 1, 0 -1, 0 0, 0 1, 0 3, 0 4, 0 5, 0 6, 0 7, 0 8, 0 9, 1 -1, 1 0, 1 1, 1 3, 1 4, 1 5, 1 6, 1 7, 1 8, 1 9, 
+		pixels: -1 0, -1 1, 0 -1, 0 0, 0 1, 0 3, 0 4, 0 5, 0 6, 0 7, 0 8, 0 9, 0 10, 0 11, 1 -1, 1 0, 1 1, 1 3, 1 4, 1 5, 1 6, 1 7, 1 8, 1 9, 1 10, 1 11, 2 5, 2 6, 2 7, 2 8, 2 9, 2 10, 2 11, 
 	34:
 		advance: 6
 		auto_update_advance: true
@@ -363,8 +363,8 @@ glyphs:
 		auto_advance_amount: 1
 		pixels: 0 3, 0 4, 0 5, 0 6, 1 1, 1 2, 1 3, 1 4, 1 5, 1 6, 1 7, 1 8, 2 1, 2 2, 2 3, 2 4, 2 7, 2 8, 3 0, 3 1, 3 3, 3 4, 3 7, 3 8, 3 9, 4 0, 4 1, 4 3, 4 4, 4 8, 4 9, 5 0, 5 1, 5 4, 5 5, 5 8, 5 9, 6 0, 6 1, 6 4, 6 5, 6 8, 6 9, 7 0, 7 1, 7 4, 7 5, 7 8, 7 9, 8 1, 8 2, 8 4, 8 5, 8 6, 8 7, 8 8, 9 1, 9 2, 9 4, 9 5, 9 6, 9 7, 
 	102:
-		advance: 5
-		auto_update_advance: false
+		advance: 6
+		auto_update_advance: true
 		auto_advance_amount: 0
 		pixels: -1 6, 0 6, 1 0, 1 1, 1 2, 1 3, 1 4, 1 5, 1 6, 1 7, 1 8, 1 9, 1 10, 2 0, 2 1, 2 2, 2 3, 2 4, 2 5, 2 6, 2 7, 2 8, 2 9, 2 10, 3 6, 3 10, 3 11, 4 5, 4 6, 4 10, 4 11, 5 5, 5 6, 5 10, 5 11, 
 	103:
