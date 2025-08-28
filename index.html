@@ -1,20 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>The Garchive</title>
-        <link rel="icon" href="images/garcon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="style_main.css">
-    </head>
+<head>
+    <title>The Garchive</title>
+    <link rel="icon" href="images/garcon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style_main.css">
 
-    <body>
-        <!--title section-->
-        <p>
+</head>
+
+<body>
+    <!--title section-->
+    <p style="text-align: center;">
         <img src="images/garcon_archivetext_small.png" alt="Logo">
         <br>
         <i>Everything there is to know about this strange specimen!</i>
+        <canvas id="titlebar" height="50"></canvas>
+    </p>
+    
+    <!--page body-->
+    <p>
+        <i>"Uh.. who?"</i>
         <br>
-        </p>
+        - Some guy on the street when asked what he thinks of Gargan
+        <br>
+        <br>
+        <br>
+        Now I know what you're thinking; "who even is this guy, is he a criminal or sum" but NO! He's actually just a guy, who would've thought.
+    </p>
 
-
-    </body>
+</body>
 </html>
+
+<!--SCRIPTS-->
+
+<!--titlebar animate-->
+<script>
+        const titlebar = document.getElementById("titlebar");
+        const ctx = titlebar.getContext("2d");
+
+        const text = "THE GARCHIVE |";
+        const spacing = 15; 
+        const fontSize = 36;
+        const y = 40;
+        let x = 0;
+
+        function applyFontSettings() {
+            ctx.font = fontSize + "px Gargling-fried";
+            ctx.fillStyle = "white";
+        }
+
+        function resizeCanvas() {
+            titlebar.width = window.innerWidth - 16;
+            applyFontSettings();
+        }
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        function animate() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, titlebar.width, titlebar.height);
+
+            ctx.fillStyle = "white";
+            const textWidth = ctx.measureText(text).width + spacing;
+            const numCopies = Math.ceil(titlebar.width / textWidth) + 1;
+
+            for (let i = 0; i < numCopies; i++) {
+                ctx.fillText(text, Math.floor(x + i * textWidth), y);
+            }
+
+            x -= 2;
+            if (x <= -textWidth) x += textWidth;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+</script>

@@ -1,17 +1,20 @@
 @font-face { font-family: Gargling-fried; src: url("images/fonts/Gargling-fried.ttf"); } 
 body {
-        background-color: rgb(255, 255, 255);
-
 /*anti-aliasing disabling*/
 image-rendering: -moz-crisp-edges;
 image-rendering: -moz-crisp-edges;
 image-rendering: -o-crisp-edges;
 image-rendering: -webkit-optimize-contrast;
 -ms-interpolation-mode: nearest-neighbor;
+font-smooth: never;
+        background-color: rgb(38, 38, 38);
 
         /*text (font and other properties)*/
         font-family: "Gargling-fried";
     }
 i {
     color:gray;
+}
+p {
+    background-color: rgb(255, 255, 255);
 }
