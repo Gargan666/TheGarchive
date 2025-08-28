@@ -1,9 +1,9 @@
 # PixelForge Font File
 format_version: 1.0
 
-line_gap: 1
+line_gap: 2
 
-space_width: 6
+space_width: 8
 
 creator_name: Unknown
 font_family_name: Gargling-fried
