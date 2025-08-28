@@ -1,4 +1,5 @@
 body {
         background-color: rgb(255, 255, 255);
+        image-rendering: pixelated;
         font-family: "Comic Sans MS", "Comic Sans";
     }
