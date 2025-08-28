@@ -1,21 +1,4 @@
 body {
         background-color: rgb(255, 255, 255);
-    }
-    h1 {
-        color: rgb(150, 187, 150);
-    }
-    ul {
-        list-style-type: square;
-    }
-    img {
-        width: 200px;
-        margin: 10px;
-
-    }
-    a{ 
-        color: blue;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
+        font-family: sans-serif;
     }
