@@ -11,5 +11,5 @@ image-rendering: -webkit-optimize-contrast;
 
         /*text (font and other properties)*/
         font-family: "Gargling-fried";
-        word-spacing: 10px;   /* spacing between words */
+        word-spacing: 3px;   /* spacing between words */
     }
