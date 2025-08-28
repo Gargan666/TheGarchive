@@ -1,8 +1,8 @@
 body {
-        background-color: black;
+        background-color: rgb(255, 255, 255);
     }
     h1 {
-        color: limegreen;
+        color: rgb(150, 187, 150);
     }
     ul {
         list-style-type: square;
