@@ -1,4 +1,5 @@
 @font-face { font-family: Gargling-fried; src: url("images/fonts/Gargling-fried.ttf"); } 
+
 body {
 /*anti-aliasing disabling*/
 image-rendering: -moz-crisp-edges;
@@ -7,14 +8,53 @@ image-rendering: -o-crisp-edges;
 image-rendering: -webkit-optimize-contrast;
 -ms-interpolation-mode: nearest-neighbor;
 font-smooth: never;
-        background-color: rgb(38, 38, 38);
 
-        /*text (font and other properties)*/
-        font-family: "Gargling-fried";
-    }
+background-image: url('images/background.png');
+background-repeat: repeat;
+background-attachment:local;
+animation: scrollBackground 70s linear infinite;
+
+/*text (font and other properties)*/
+font-family: "Gargling-fried";
+}
+
+img:hover {
+filter:opacity(0.5);
+}
+
 i {
     color:gray;
+
 }
+
 p {
-    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
+}
+
+section {
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+    float: left;
+    padding: 20px;
+    margin-top: 10px;
+    width: 70%;
+}
+
+nav {
+  width: 24%;
+  float: right;
+  background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/*misc stuff like animations or scripts*/
+
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 1000px; /* adjust based on image width */
+  }
 }
