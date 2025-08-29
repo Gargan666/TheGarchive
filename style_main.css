@@ -47,6 +47,12 @@ nav {
   text-align: center;
 }
 
+footer {
+  height: 300px;
+  width: 1000px;
+  float: left;
+}
+
 /*misc stuff like animations or scripts*/
 
 @keyframes scrollBackground {
