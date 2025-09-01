@@ -1,7 +1,6 @@
-// search.js
 (() => {
   // Adjust this if files.json lives somewhere else (e.g. "../files.json")
-  const FILES_JSON_URL = "subpages/files.json";
+  const FILES_JSON_URL = "THEGARCHIVE/subpages/files.json";
 
   // Grab elements and bail fast if missing
   const input = document.getElementById("search");
