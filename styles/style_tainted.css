@@ -1,7 +1,27 @@
-@font-face { font-family: Gargling-fried; src: url("images/fonts/Gargling-fried.ttf"); } 
+@font-face { font-family: Gargling-fried; src: url("../images/fonts/Gargling-fried.ttf"); } 
 
 body {
 font-family: "Gargling-fried";
 background-color: black;
 color: white;
+font-size:24px;
+
+background-image: url('../images/SECRET.gif');
+background-repeat: repeat;
+background-attachment:local;
+animation: scrollBackground 70s linear infinite;
+}
+
+#hidden {
+text-align:center;
+opacity:0;
+}
+
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 1000px; /* adjust based on image width */
+  }
 }

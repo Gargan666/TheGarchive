@@ -1,4 +1,4 @@
-@font-face { font-family: Gargling-fried; src: url("images/fonts/Gargling-fried.ttf"); } 
+@font-face { font-family: Gargling-fried; src: url("../images/fonts/Gargling-fried.ttf"); } 
 
 body {
 /*anti-aliasing disabling*/
@@ -8,7 +8,7 @@ image-rendering: -webkit-optimize-contrast;
 -ms-interpolation-mode: nearest-neighbor;
 font-smooth: never;
 
-background-image: url('images/background.png');
+background-image: url('../images/background.png');
 background-repeat: repeat;
 background-attachment:local;
 animation: scrollBackground 70s linear infinite;
