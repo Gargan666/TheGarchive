@@ -1,3 +1,4 @@
+// search.js
 (() => {
   // Adjust this if files.json lives somewhere else (e.g. "../files.json")
   const FILES_JSON_URL = "files.json";
