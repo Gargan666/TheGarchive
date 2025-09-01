@@ -1,4 +1,5 @@
 [
   { "name": "Home", "url": "index.html" },
+  { "name": "People", "url": "people.html" },
   { "name": "Projects", "url": "projects.html" }
 ]

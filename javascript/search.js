@@ -1,9 +1,7 @@
 // search.js
 (() => {
-  // Adjust this if files.json lives somewhere else (e.g. "../files.json")
   const FILES_JSON_URL = "files.json";
 
-  // Grab elements and bail fast if missing
   const input = document.getElementById("search");
   const btn = document.getElementById("searchBtn");
   const results = document.getElementById("results");
@@ -17,7 +15,7 @@
     pages: [],
   };
 
-  // Load pages.json (with graceful fallback + helpful error)
+  // Load pages.json
   (async function loadPages() {
     try {
       const res = await fetch(FILES_JSON_URL, { cache: "no-store" });
@@ -29,15 +27,14 @@
         .filter(p => p && p.name && p.url)
         .map(p => ({ name: String(p.name), url: String(p.url) }));
 
-      // Show full list initially
-      render(state.pages);
+      // Don’t render immediately — wait until focus
+      results.innerHTML = "";
     } catch (err) {
       console.warn("Failed to load files.json via fetch:", err);
 
-      // Optional fallback: if you set window.PAGES in a separate script, we’ll use it.
       if (Array.isArray(window.PAGES)) {
         state.pages = window.PAGES;
-        render(state.pages);
+        results.innerHTML = "";
       } else {
         renderMessage(
           "Could not load pages list. Check the files.json path and run this site from a local web server (opening the HTML file directly blocks fetch)."
@@ -59,6 +56,11 @@
 
   input.addEventListener("focus", () => {
     if (!input.value) render(state.pages); // show all on focus if empty
+  });
+
+  input.addEventListener("blur", () => {
+    // Optional: hide results when leaving search box
+    setTimeout(() => (results.innerHTML = ""), 200);
   });
 
   btn.addEventListener("click", () => {
