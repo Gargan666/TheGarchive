@@ -53,6 +53,33 @@ footer {
   float: left;
 }
 
+input[type="text"] {
+    border: 0px solid #ffffff;
+    padding: 10px;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+}
+
+input:focus {
+  border: 0px solid #ffffff;
+  outline: none;
+  background-image: linear-gradient(rgb(55, 55, 55), rgb(0, 0, 0));
+
+  color: white;
+}
+
+button {
+    padding: 10px;
+    background-color: #888888;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #595959;
+}
+
+
 /*misc stuff like animations or scripts*/
 
 @keyframes scrollBackground {
