@@ -37,14 +37,10 @@ p {
 /*SECTIONS*/
 section {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
-    float: left;
     padding: 20px;
     margin-top: 10px;
-    width: 70%;
 }
 nav {
-  width: 24%;
-  float: right;
   background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
   padding: 20px;
   margin-top: 10px;
