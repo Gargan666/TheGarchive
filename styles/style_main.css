@@ -17,19 +17,25 @@ animation: scrollBackground 70s linear infinite;
 font-family: "Gargling-fried";
 }
 
+/*IMAGELINK*/
+img {
+transition: 0.3s ease-in-out;
+}
+
 img:hover {
 filter:opacity(0.5);
 }
 
+/*TEXT*/
 i {
     color:gray;
 
 }
-
 p {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
+/*SECTIONS*/
 section {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
     float: left;
@@ -37,7 +43,6 @@ section {
     margin-top: 10px;
     width: 70%;
 }
-
 nav {
   width: 24%;
   float: right;
@@ -46,19 +51,19 @@ nav {
   margin-top: 10px;
   text-align: center;
 }
-
 footer {
   height: 300px;
-  width: 1000px;
+  width: 100%;
   float: left;
 }
 
+/*SEARCH*/
 input[type="text"] {
     border: 0px solid #ffffff;
     padding: 10px;
     background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+    font-family: "Gargling-fried";
 }
-
 input:focus {
   border: 0px solid #ffffff;
   outline: none;
@@ -66,21 +71,25 @@ input:focus {
 
   color: white;
 }
-
 button {
     padding: 10px;
     background-color: #888888;
     color: white;
     border: none;
     cursor: pointer;
+    font-family: "Gargling-fried";
 }
-
 button:hover {
     background-color: #595959;
 }
-
 #results {
 color:white;
+background-color:black;
+}
+
+/*LISTS*/
+ul {
+list-style:square;
 }
 
 
