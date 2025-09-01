@@ -1,7 +1,4 @@
 [
-  { "name": "Home", "url": "index.html" },
-  { "name": "Projects", "url": "THEGARCHIVE/subpages/projects.html" },
-  { "name": "Services", "url": "services.html" },
-  { "name": "Contact", "url": "contact.html" },
-  { "name": "Blog", "url": "blog.html" }
+  { "name": "Home", "url": "/index.html" },
+  { "name": "Projects", "url": "/subpages/projects.html" }
 ]
