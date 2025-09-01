@@ -21,7 +21,6 @@ font-family: "Gargling-fried";
 img {
 transition: 0.3s ease-in-out;
 }
-
 img:hover {
 filter:opacity(0.5);
 }
@@ -85,6 +84,9 @@ button:hover {
 #results {
 color:white;
 background-color:black;
+}
+a {
+color: greenyellow;
 }
 
 /*LISTS*/
