@@ -20,7 +20,7 @@ function getStoredSlug() {
 // ---------------------- Fetch index.json ----------------------
 async function fetchIndex() {
   const isGitHub = window.location.hostname.includes('github.io');
-  const FILES_JSON_URL = isGitHub ? '/content/index.json' : '/content/index.json';
+  const FILES_JSON_URL = isGitHub ? './content/index.json' : './content/index.json';
   try {
     const res = await fetch(FILES_JSON_URL, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
