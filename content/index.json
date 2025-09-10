@@ -1,17 +1,26 @@
 [
   {
-    "title": "Domestic Cat",
-    "slug": "felis-catus",
-    "file": "cats.md",
+    "title": "Test page",
+    "slug": "test",
+    "file": "test.md",
     "date": "2025-09-10",
-    "summary": "Small carnivorous mammal, common companion to humans.",
+    "summary": "This is a test page. Please don't mind it.",
     "categories": [
-      "cat species"
+      "test"
     ],
-    "tags": [
-      "pet",
-      "mammal"
+    "tags": [],
+    "thumbnail": null
+  },
+  {
+    "title": "Test page 2",
+    "slug": "test2",
+    "file": "test2.md",
+    "date": "2025-09-10",
+    "summary": "This is a test page. Please don't mind it. 2",
+    "categories": [
+      "test"
     ],
-    "thumbnail": "/images/cat.jpg"
+    "tags": [],
+    "thumbnail": null
   }
 ]

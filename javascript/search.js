@@ -53,12 +53,20 @@
   });
 
   btn.addEventListener("click", () => {
-    const q = input.value.trim().toLowerCase();
-    const match = pages.find(p =>
-      p.name.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q)
-    );
-    if (match) window.location.href = match.url;
+  const q = input.value.trim().toLowerCase();
+  const match = pages.find(p =>
+    p.name.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q)
+  );
+  if (match) {
+    // Save slug in sessionStorage
+    const urlParams = new URL(match.url, window.location.origin).searchParams;
+    const slug = urlParams.get("slug");
+    if (slug) sessionStorage.setItem("currentSlug", slug);
+
+    window.location.href = match.url;
+  }
   });
+
 
   // --- Rendering ---
   function render(list) {
@@ -68,15 +76,23 @@
       return;
     }
     const frag = document.createDocumentFragment();
-    list.forEach(p => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = p.url;
-      a.textContent = p.name;
-      li.appendChild(a);
-      frag.appendChild(li);
-    });
-    results.appendChild(frag);
+  list.forEach(p => {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = p.url;
+  a.textContent = p.name;
+
+  // Save slug on click
+  a.addEventListener("click", e => {
+    const urlParams = new URL(p.url, window.location.origin).searchParams;
+    const slug = urlParams.get("slug");
+    if (slug) sessionStorage.setItem("currentSlug", slug);
+  });
+
+  li.appendChild(a);
+    frag.appendChild(li);
+  });
+  results.appendChild(frag);
   }
 
   function renderMessage(text) {

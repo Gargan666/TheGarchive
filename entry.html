@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>The Garchive — Entry</title>
+    <meta charset="UTF-8">
+    <title>The Garchive</title>
     <link rel="icon" href="images/garcon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style_main.css">
 </head>
+
 <body>
-    <!--title section-->
-    <p>
+    <!-- Title Section -->
+    <header>
         <a href="index.html">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
                 style="width:200px; height:auto; vertical-align: middle;">
         </a>
-
         &nbsp;
-
         <i>Everything there is to know about this strange specimen!</i>
         <canvas id="titlebar" height="25"
             data-text="THE GARCHIVE |"
@@ -27,33 +27,43 @@
             data-color="white"
             data-bgcolor="black">
         </canvas>
+    </header>
 
-        <br>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search pages...">
-            <button id="searchBtn">Search</button>
-            <ul id="results"></ul>
-        </div>
-        <script src="javascript/search.js" defer></script>
-    </p>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search pages...">
+        <button id="searchBtn">Search</button>
+        <ul id="results"></ul>
+    </div>
+    <script src="javascript/search.js" defer></script>
 
-    <!-- page body -->
-    <main id="app"></main>
+    <!-- Main Entry Content -->
+    <main id="app">
+        <article class="entry">
+            <!-- Thumbnail -->
+            <img id="entry-thumb" class="entry-thumb" src="" alt="">
 
-    <!-- External script for titlebar -->
+            <!-- Header Section -->
+            <section id="entry-header">
+                <h1 id="entry-title"></h1>
+                <p id="entry-summary"></p>
+                <div class="meta">
+                    <span id="entry-date"></span>
+                    <span id="entry-categories"></span>
+                </div>
+            </section>
+
+            <!-- Markdown Content -->
+            <section id="entry-content" class="entry-content"></section>
+        </article>
+    </main>
+
+    <!-- External scripts -->
     <script src="javascript/titlebar.js" defer></script>
-
-    <!-- Markdown parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- DOM sanitizer -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script src="javascript/site.js" defer></script>
 
-    <!-- site JS -->
-    <script src="javascript/site.js"></script>
-    <script>
-        // initialize the entry page
-        wiki.initEntry();
-    </script>
 </body>
+
 </html>
