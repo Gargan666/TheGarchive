@@ -17,9 +17,13 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
 
+      const isGitHub = window.location.hostname.includes('github.io');
+
+      const baseEntryPath = isGitHub ? './TheGarchive/entry.html' : './entry.html';
+
       pages = data.map(item => ({
         name: item.title,
-        url: `./entry.html?slug=${encodeURIComponent(item.slug)}`,
+        url: `${baseEntryPath}?slug=${encodeURIComponent(item.slug)}`,
         slug: item.slug,
         summary: item.summary || "",
       }));
