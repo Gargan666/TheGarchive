@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Domestic Cat",
+    "slug": "felis-catus",
+    "file": "cats.md",
+    "date": "2025-09-10",
+    "summary": "Small carnivorous mammal, common companion to humans.",
+    "categories": [
+      "cat species"
+    ],
+    "tags": [
+      "pet",
+      "mammal"
+    ],
+    "thumbnail": "/images/cat.jpg"
+  }
+]

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>The Garchive — Category</title>
+    <link rel="icon" href="images/garcon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/style_main.css">
+</head>
+<body>
+    <!--title section-->
+    <p>
+        <a href="index.html">
+            <img src="images/garcon_archivetext_small.png" alt="Homepage"
+                style="width:200px; height:auto; vertical-align: middle;">
+        </a>
+
+        &nbsp;
+
+        <i>Everything there is to know about this strange specimen!</i>
+        <canvas id="titlebar" height="25"
+            data-text="THE GARCHIVE |"
+            data-spacing="15"
+            data-font-size="18"
+            data-y="20"
+            data-speed="2"
+            data-font-family="Gargling-fried"
+            data-color="white"
+            data-bgcolor="black">
+        </canvas>
+
+        <br>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search pages...">
+            <button id="searchBtn">Search</button>
+            <ul id="results"></ul>
+        </div>
+        <script src="javascript/search.js" defer></script>
+    </p>
+
+    <!-- page body -->
+    <main id="app"></main>
+
+    <!-- External script for titlebar -->
+    <script src="javascript/titlebar.js" defer></script>
+
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- DOM sanitizer -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+
+    <!-- site JS -->
+    <script src="javascript/site.js"></script>
+    <script>
+        // initialize the category page
+        wiki.initCategory();
+    </script>
+</body>
+</html>

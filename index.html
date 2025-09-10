@@ -16,7 +16,17 @@
 
         <br>
         <i>Everything there is to know about this strange specimen!</i>
-        <canvas id="titlebar" height="50"></canvas>
+
+        <canvas id="titlebar" height="50"
+            data-text="THE GARCHIVE |"
+            data-spacing="15"
+            data-font-size="36"
+            data-y="40"
+            data-speed="2"
+            data-font-family="Gargling-fried"
+            data-color="white"
+            data-bgcolor="black">
+        </canvas>
         
         <br>
         <div class="search-container">
@@ -57,10 +67,14 @@
         <br>
         The website is actively being worked on, so there might be a few issues. Specifically bugs and wrong info.
         <br>
-        And also, there might be something.. wrong.
+        And also, other issues may arise.. though that should be rare.
         <br>
         <br>
         Good luck!
+        <br>
+        <br>
+        <br>
+        By the way, please do not use 'Inspect'. It ruins our secrecy, and if you want to be enthralled by our mystery, do not use it.
         </section>
     </p>
     
@@ -102,60 +116,14 @@
         <br>
         <br>
         <br>
-        <h1 style="text-align:right;">
+        <!--<h1 style="text-align:right;">
         <a href="hidden_pages/WHERE_AM_I.html">
         <img src="images/SECRET.gif">
         </a>
-        </h1>
+        </h1>-->
     </footer>
 
+    <script src="javascript/titlebar.js" defer></script>
  </body>
 
 </html>
-
-<!--SCRIPTS-->
-
-<!--titlebar animate-->
-<script>
-        const titlebar = document.getElementById("titlebar");
-        const ctx = titlebar.getContext("2d");
-
-        const text = "THE GARCHIVE |";
-        const spacing = 15; 
-        const fontSize = 36;
-        const y = 40;
-        let x = 0;
-
-        function applyFontSettings() {
-            ctx.font = fontSize + "px Gargling-fried";
-            ctx.fillStyle = "white";
-        }
-
-        function resizeCanvas() {
-            titlebar.width = window.innerWidth - 16;
-            applyFontSettings();
-        }
-
-        resizeCanvas();
-        window.addEventListener("resize", resizeCanvas);
-
-        function animate() {
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, titlebar.width, titlebar.height);
-
-            ctx.fillStyle = "white";
-            const textWidth = ctx.measureText(text).width + spacing;
-            const numCopies = Math.ceil(titlebar.width / textWidth) + 1;
-
-            for (let i = 0; i < numCopies; i++) {
-                ctx.fillText(text, Math.floor(x + i * textWidth), y);
-            }
-
-            x -= 2;
-            if (x <= -textWidth) x += textWidth;
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-</script>

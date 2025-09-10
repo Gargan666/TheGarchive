@@ -6,7 +6,7 @@ background-color: black;
 color: white;
 font-size:24px;
 
-background-image: url('../images/SECRET.gif');
+background-image: url('../images/background_wave.png');
 background-repeat: repeat;
 background-attachment:local;
 animation: scrollBackground 70s linear infinite;
