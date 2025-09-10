@@ -80,7 +80,7 @@ async function initEntry() {
   }
 
   // fetch the markdown file
-  const mdRes = await fetch(`/content/${encodeURIComponent(item.file)}`);
+  const mdRes = await fetch(`content/${encodeURIComponent(item.file)}`);
   if (!mdRes.ok) {
     app.innerHTML = '<p id="error">Failed to load entry content.</p>';
     return;
