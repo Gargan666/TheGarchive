@@ -13,7 +13,7 @@
   // Load content/index.json
   (async function loadPages() {
     try {
-      const res = await fetch("/content/index.json", { cache: "no-store" });
+      const res = await fetch("content/index.json", { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
 
