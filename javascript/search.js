@@ -19,7 +19,7 @@
 
       pages = data.map(item => ({
         name: item.title,
-        url: `/entry.html?slug=${encodeURIComponent(item.slug)}`,
+        url: `./entry.html?slug=${encodeURIComponent(item.slug)}`,
         slug: item.slug,
         summary: item.summary || "",
       }));
