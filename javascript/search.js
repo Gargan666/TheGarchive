@@ -19,7 +19,7 @@
 
       const isGitHub = window.location.hostname.includes('github.io');
 
-      const baseEntryPath = isGitHub ? './TheGarchive/entry.html' : './entry.html';
+      const baseEntryPath = isGitHub ? './entry.html' : './entry.html';
 
       pages = data.map(item => ({
         name: item.title,
@@ -53,8 +53,12 @@
     if (!input.value) render(pages);
   });
 
-  input.addEventListener("blur", () => {
-    setTimeout(() => (results.innerHTML = ""), 100);
+  input.addEventListener("blur", (e) => {
+  setTimeout(() => {
+    if (!results.contains(document.activeElement)) {
+      results.innerHTML = "";
+    }
+  }, 100);
   });
 
   btn.addEventListener("click", () => {

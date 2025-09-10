@@ -19,7 +19,8 @@ function getStoredSlug() {
 
 // ---------------------- Fetch index.json ----------------------
 async function fetchIndex() {
-  const FILES_JSON_URL = '/content/index.json';
+  const isGitHub = window.location.hostname.includes('github.io');
+  const FILES_JSON_URL = isGitHub ? '/TheGarchive/content/index.json' : '/content/index.json';
   try {
     const res = await fetch(FILES_JSON_URL, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

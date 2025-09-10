@@ -34,6 +34,10 @@ a {
   text-decoration: none;
   color: greenyellow;
 }
+a:hover {
+  text-decoration: solid;
+  color: rgb(226, 255, 183);
+}
 header {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
 }
