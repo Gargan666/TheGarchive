@@ -4,6 +4,19 @@ function getQueryParam(name) {
   return params.get(name);
 }
 
+function saveSlug(slug) {
+  if (slug) {
+    sessionStorage.setItem('currentSlug', slug);
+    console.log("Saved slug to sessionStorage:", slug);
+  }
+}
+
+function getStoredSlug() {
+  const stored = sessionStorage.getItem('currentSlug');
+  console.log("Stored slug from sessionStorage:", stored);
+  return stored;
+}
+
 // ---------------------- Fetch index.json ----------------------
 async function fetchIndex() {
   const FILES_JSON_URL = '/content/index.json';
@@ -36,21 +49,28 @@ function stripFrontmatter(mdText) {
   return mdText; // no frontmatter found
 }
 
-
 // ---------------------- Entry page rendering ----------------------
 async function initEntry() {
-
-  console.log("SessionStorage currentSlug:", sessionStorage.getItem('currentSlug')); // <--- DEBUG
-
   const items = await fetchIndex();
-  const slug = getQueryParam('slug') || sessionStorage.getItem('currentSlug');
   const app = document.getElementById('app');
   if (!app) return;
+
+  // Try URL param first, then sessionStorage
+  let slug = getQueryParam('slug');
+  console.log("Slug from URL:", slug);
+
+  if (!slug) {
+    console.warn("No slug in URL, checking sessionStorage...");
+    slug = getStoredSlug();
+  }
 
   if (!slug) {
     app.innerHTML = '<p>No slug specified.</p>';
     return;
   }
+
+  // Save slug to sessionStorage
+  saveSlug(slug);
 
   // find item in manifest
   const item = items.find(it => it.slug === slug);
@@ -82,15 +102,13 @@ async function initEntry() {
   const categoriesEl = document.getElementById('entry-categories');
   const contentEl = document.getElementById('entry-content');
 
-  if (thumbEl) thumbEl.src = item.thumbnail || '';
-  if (thumbEl) thumbEl.alt = item.title || '';
+  if (thumbEl) thumbEl.alt = item.title || 'Page Title';
   if (titleEl) titleEl.textContent = item.title || '';
   if (summaryEl) summaryEl.textContent = item.summary || '';
-  if (dateEl) dateEl.textContent = item.date || '';
-  if (categoriesEl) categoriesEl.innerHTML = (item.categories || []).map(c => `<a href="/category.html?category=${encodeURIComponent(c)}">${c}</a>`).join(' • ');
+  if (dateEl) dateEl.textContent = 'Last Updated: ' + (item.date || '');
+  //if (categoriesEl) categoriesEl.innerHTML = (item.categories || []).map(c => `<a href="/category.html?category=${encodeURIComponent(c)}">${c}</a>`).join(' • ');
   if (contentEl) contentEl.innerHTML = safe;
 }
-
 
 // ---------------------- Run ----------------------
 document.addEventListener('DOMContentLoaded', initEntry);

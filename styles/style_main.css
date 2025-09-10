@@ -17,21 +17,22 @@ animation: scrollBackground 70s linear infinite;
 font-family: "Gargling-fried";
 }
 
-/*IMAGELINK*/
+/*IMAGES*/
 img {
 transition: 0.3s ease-in-out;
 }
 img:hover {
 filter:opacity(0.5);
 }
-a {
-  text-decoration: none;
-}
 
 /*TEXT*/
 i {
     color:gray;
 
+}
+a {
+  text-decoration: none;
+  color: greenyellow;
 }
 header {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
@@ -83,9 +84,6 @@ button:hover {
 #results {
 color:white;
 background-color:black;
-}
-a {
-color: greenyellow;
 }
 
 /*LISTS*/

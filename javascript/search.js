@@ -20,6 +20,7 @@
       pages = data.map(item => ({
         name: item.title,
         url: `/entry.html?slug=${encodeURIComponent(item.slug)}`,
+        slug: item.slug,
         summary: item.summary || "",
       }));
 
@@ -53,20 +54,18 @@
   });
 
   btn.addEventListener("click", () => {
-  const q = input.value.trim().toLowerCase();
-  const match = pages.find(p =>
-    p.name.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q)
-  );
-  if (match) {
-    // Save slug in sessionStorage
-    const urlParams = new URL(match.url, window.location.origin).searchParams;
-    const slug = urlParams.get("slug");
-    if (slug) sessionStorage.setItem("currentSlug", slug);
+    const q = input.value.trim().toLowerCase();
+    const match = pages.find(p =>
+      p.name.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q)
+    );
+    if (match) {
+      // Save slug to sessionStorage
+      sessionStorage.setItem("currentSlug", match.slug);
+      console.log("Saved slug on button click:", match.slug);
 
-    window.location.href = match.url;
-  }
+      window.location.href = match.url;
+    }
   });
-
 
   // --- Rendering ---
   function render(list) {
@@ -76,23 +75,22 @@
       return;
     }
     const frag = document.createDocumentFragment();
-  list.forEach(p => {
-  const li = document.createElement("li");
-  const a = document.createElement("a");
-  a.href = p.url;
-  a.textContent = p.name;
+    list.forEach(p => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = p.url;
+      a.textContent = p.name;
 
-  // Save slug on click
-  a.addEventListener("click", e => {
-    const urlParams = new URL(p.url, window.location.origin).searchParams;
-    const slug = urlParams.get("slug");
-    if (slug) sessionStorage.setItem("currentSlug", slug);
-  });
+      // Save slug on click
+      a.addEventListener("click", e => {
+        sessionStorage.setItem("currentSlug", p.slug);
+        console.log("Saved slug on link click:", p.slug);
+      });
 
-  li.appendChild(a);
-    frag.appendChild(li);
-  });
-  results.appendChild(frag);
+      li.appendChild(a);
+      frag.appendChild(li);
+    });
+    results.appendChild(frag);
   }
 
   function renderMessage(text) {
