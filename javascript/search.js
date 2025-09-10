@@ -17,9 +17,7 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
 
-      const isGitHub = window.location.hostname.includes('github.io');
-
-      const baseEntryPath = isGitHub ? './entry.html' : './entry.html';
+      const baseEntryPath = './entry.html';
 
       pages = data.map(item => ({
         name: item.title,
