@@ -18,10 +18,10 @@ font-family: "Gargling-fried";
 }
 
 /*IMAGES*/
-img {
+#imglink {
 transition: 0.3s ease-in-out;
 }
-img:hover {
+#imglink:hover {
 filter:opacity(0.5);
 }
 
@@ -62,32 +62,40 @@ footer {
 
 /*SEARCH*/
 input[type="text"] {
-    border: 0px solid #ffffff;
     padding: 10px;
+    border: none;
     background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
     font-family: "Gargling-fried";
+    vertical-align: middle;
 }
 input:focus {
-  border: 0px solid #ffffff;
   outline: none;
   background-image: linear-gradient(rgb(55, 55, 55), rgb(0, 0, 0));
-
+  border: none;
   color: white;
 }
 button {
-    padding: 10px;
+    padding: 5px;
     background-color: #888888;
     color: white;
     border: none;
     cursor: pointer;
-    font-family: "Gargling-fried";
+    vertical-align: middle;
 }
 button:hover {
     background-color: #595959;
 }
 #results {
-color:white;
-background-color:black;
+  display: all;
+  color: white;
+  background-color: black;
+  padding: 10px;         /* space inside the box */
+  padding-left: 30px;
+  width: 188px;            /* adjust width as needed */
+  font-size: 16px;       /* paragraph/text size */
+}
+#results:empty {
+  display: none; /* hides the box entirely if no text is inside */
 }
 
 /*LISTS*/
@@ -95,8 +103,17 @@ ul {
 list-style:square;
 }
 
+/*ENTRIES*/
+#entry-date {
+color: rgb(75, 75, 75);
+}
 
-/*misc stuff like animations or scripts*/
+/*MISC STYLING*/
+#error {
+color:white;
+}
+
+/*script shit*/
 
 @keyframes scrollBackground {
   from {

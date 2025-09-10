@@ -65,7 +65,7 @@ async function initEntry() {
   }
 
   if (!slug) {
-    app.innerHTML = '<p>No slug specified.</p>';
+    app.innerHTML = '<p id="error">No slug specified.</p>';
     return;
   }
 
@@ -75,14 +75,14 @@ async function initEntry() {
   // find item in manifest
   const item = items.find(it => it.slug === slug);
   if (!item) {
-    app.innerHTML = '<p>Entry not found.</p>';
+    app.innerHTML = '<p id="error">Entry not found.</p>';
     return;
   }
 
   // fetch the markdown file
   const mdRes = await fetch(`/content/${encodeURIComponent(item.file)}`);
   if (!mdRes.ok) {
-    app.innerHTML = '<p>Failed to load entry content.</p>';
+    app.innerHTML = '<p id="error">Failed to load entry content.</p>';
     return;
   }
   const mdText = await mdRes.text();

@@ -13,7 +13,8 @@
     <header>
         <a href="index.html">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
-                style="width:200px; height:auto; vertical-align: middle;">
+                style="width:200px; height:auto; vertical-align: middle;"
+                id="imglink">
         </a>
         &nbsp;
         <i>Everything there is to know about this strange specimen!</i>
@@ -33,7 +34,9 @@
     <br>
     <div class="search-container">
         <input type="text" id="search" placeholder="Search pages...">
-        <button id="searchBtn">Search</button>
+        <button id="searchBtn">
+            <img src="images/search.png" alt="Search">
+        </button>
         <ul id="results"></ul>
     </div>
     <script src="javascript/search.js" defer></script>
@@ -41,8 +44,6 @@
     <!-- Main Entry Content -->
     <main id="app">
         <article class="entry">
-            <!-- Thumbnail -->
-            <img id="entry-thumb" class="entry-thumb" src="" alt="">
 
             <!-- Header Section -->
             <section id="entry-header">

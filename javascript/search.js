@@ -56,7 +56,7 @@
     if (!results.contains(document.activeElement)) {
       results.innerHTML = "";
     }
-  }, 100);
+  }, 0);
   });
 
   btn.addEventListener("click", () => {
