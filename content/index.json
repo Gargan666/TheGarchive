@@ -1,5 +1,29 @@
 [
   {
+    "title": "Gargan (character)",
+    "slug": "garganchar",
+    "file": "gargan_character.md",
+    "date": "2025-09-15",
+    "summary": "Gargan, the character",
+    "categories": [
+      "Characters"
+    ],
+    "tags": [],
+    "thumbnail": null
+  },
+  {
+    "title": "Gargan (real life)",
+    "slug": "garganirl",
+    "file": "gargan_person.md",
+    "date": "2025-09-15",
+    "summary": "Gargan, the real person",
+    "categories": [
+      "People"
+    ],
+    "tags": [],
+    "thumbnail": null
+  },
+  {
     "title": "Test page",
     "slug": "test",
     "file": "test.md",

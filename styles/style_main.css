@@ -1,4 +1,5 @@
 @font-face { font-family: Gargling-fried; src: url("../images/fonts/Gargling-fried.ttf"); } 
+@font-face { font-family: Gargling-symbols; src: url("../images/fonts/Gargling-symbols.ttf"); } 
 
 body {
 /*anti-aliasing disabling*/
@@ -37,30 +38,118 @@ a {
 a:hover {
   text-decoration: solid;
   color: rgb(226, 255, 183);
+  cursor: pointer;
 }
 header {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
 }
+.obfuscated {
+background-color: black;
+position: relative;
+user-select: none;
+font-weight: 100;
+}
+.entry-content h1 {
+font: 24px Gargling-fried;
+font-weight: normal;
+}
+#symbols {
+  font-family: "Gargling-symbols";
+}
 
-/*SECTIONS*/
+/*LAYOUT*/
+#indexbody {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
 section {
-    background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
-    padding: 20px;
-    margin-top: 10px;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  padding: 20px;
+  margin-bottom: 10px;
+  flex: 3;
 }
 nav {
   background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
   padding: 20px;
-  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
+  flex: 1;
 }
 footer {
-  height: 300px;
+  float: center;
+  background-color:rgb(163, 163, 163);
+  padding: 20px;
   width: 100%;
-  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+/* Layout for entry body + sidebar */
+.entry-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.entry-content {
+  flex: 3;
+}
+#entry-sidebar {
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  font-size: larger;
+  font-weight: 500;
+  flex: 1;
+  margin-bottom: 10px;
+}
+.gallery-viewer {
+  text-align: center;
+}
+#gallery-prev,
+#gallery-title,
+#gallery-next {
+    display: inline-block; /* allows them to sit side by side */
+    vertical-align: middle; /* optional, aligns them nicely */
+}
+#gallery-prev,
+#gallery-next {
+  font-family: "Gargling-symbols";
+  scale: 1.2;
+}
+#gallery-prev-disabled,
+#gallery-next-disabled {
+  background-color: #cecece;
+  color: gray;
+  font-family: "Gargling-symbols";
+}
+#gallery-prev-disabled:hover,
+#gallery-next-disabled:hover {
+  background-color: #cecece;
+  color: gray;
+  cursor: default;
+}
+.gallery-viewer img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+#entry-attributes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#entry-attributes li {
+  margin: 5px 0;
+  font-size: 14px;
 }
 
+
 /*SEARCH*/
+#search-container {
+  position: relative;
+}
 input[type="text"] {
     padding: 10px;
     border: none;
@@ -85,17 +174,59 @@ button {
 button:hover {
     background-color: #595959;
 }
-#results {
-  display: all;
-  color: white;
+#results-wrapper {
+  position: absolute;
+  width: 223px;
+  max-height: 200px;       /* max height for content */
+  align-content:center;
+  overflow: hidden;         /* hide native scrollbar */
   background-color: black;
-  padding: 10px;         /* space inside the box */
-  padding-left: 30px;
-  width: 188px;            /* adjust width as needed */
-  font-size: 16px;       /* paragraph/text size */
+  color: white;
+  font-size: 16px;
+  padding-left: 5px;
+  margin-top: 0px;
+  z-index: 1000;
+  outline-style:double;
+  outline-width: 2px;
+  outline-color: #888;
+}
+#results-wrapper:empty {
+  display: none;
+}
+/* ---------- Actual scrollable content ---------- */
+#results {
+  padding: -10px 10px 10px 10px; /* leave space for scrollbar */
+  max-height: 120px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+  /* Hide native scrollbars */
+  scrollbar-width: none;      /* Firefox */
 }
 #results:empty {
-  display: none; /* hides the box entirely if no text is inside */
+  display: none;
+}
+#results::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Edge */
+}
+/* ---------- Custom scrollbar ---------- */
+#custom-scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #111;
+}
+
+#thumb {
+  width: 50%;
+  left: 25%;
+  background-color: #888;
+  border-radius: 0;   /* blocky rectangle */
+  position: absolute;
+  top: 0;
+  cursor: pointer;
 }
 
 /*LISTS*/

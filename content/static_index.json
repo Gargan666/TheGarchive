@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Home",
+    "url": "./index.html",
+    "summary": "Return to the homepage"
+  },
+  {
+    "title": "About",
+    "url": "./about.html",
+    "summary": "Learn more about The Garchive project"
+  },
+  {
+    "title": "Contact",
+    "url": "./contact.html",
+    "summary": "Get in touch"
+  }
+]
