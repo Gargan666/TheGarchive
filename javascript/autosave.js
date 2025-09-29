@@ -1,54 +1,49 @@
 (() => {
-  function saveFromHref(href) {
+  function getAndStoreSlugAndCategory(href) {
     if (!href) return;
+
     try {
       const url = new URL(href, location.href);
-      const slug = url.searchParams.get('slug');
-      const category = url.searchParams.get('category');
 
+      // Check slug
+      const slug = url.searchParams.get('slug');
       if (slug) {
         sessionStorage.setItem('currentSlug', slug);
-        console.log('Saved slug from link:', slug);
+        console.log('Using slug from URL:', slug);
+      } else {
+        const storedSlug = sessionStorage.getItem('currentSlug');
+        if (storedSlug) {
+          console.log('Using slug from storage (no URL slug):', storedSlug);
+        }
       }
+
+      // Check category
+      const category = url.searchParams.get('category');
       if (category) {
         sessionStorage.setItem('currentCategory', category);
-        console.log('Saved category from link:', category);
+        console.log('Using category from URL:', category);
+      } else {
+        const storedCategory = sessionStorage.getItem('currentCategory');
+        if (storedCategory) {
+          console.log('Using category from storage (no URL category):', storedCategory);
+        }
       }
+
     } catch (err) {
-      console.warn('Could not parse href when saving slug/category:', href, err);
+      console.warn('Could not parse href when getting slug/category:', href, err);
     }
   }
 
-  // Generic handler for all link clicks
-  function linkClickHandler(e) {
+  // Run immediately for the current page load
+  getAndStoreSlugAndCategory(location.href);
+
+  // Run again whenever a link is clicked
+  document.addEventListener('click', (e) => {
     const link = e.target?.closest?.('a[href]');
     if (!link) return;
 
     const hrefAttr = link.getAttribute('href');
-    saveFromHref(hrefAttr);
-
-    // ⚠️ Do NOT call preventDefault.
-    // Let the browser navigate normally.
-  }
-
-  // Just one event listener is enough
-  document.addEventListener('click', linkClickHandler, { capture: true });
-
-  // If you still want SPA-like back/forward without reloads,
-  // keep this. Otherwise you can remove it.
-  window.addEventListener('popstate', (event) => {
-    console.log('Popstate event:', event.state);
-
-    if (event.state?.slug) {
-      sessionStorage.setItem('currentSlug', event.state.slug);
-      console.log('Restored slug from history:', event.state.slug);
-      if (typeof initEntry === 'function') initEntry();
-    }
-
-    if (event.state?.category) {
-      sessionStorage.setItem('currentCategory', event.state.category);
-      console.log('Restored category from history:', event.state.category);
-      if (typeof renderCategory === 'function') renderCategory();
-    }
-  });
+    getAndStoreSlugAndCategory(hrefAttr);
+    // Let browser navigate normally
+  }, { capture: true });
 })();
