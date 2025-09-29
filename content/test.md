@@ -1,10 +1,12 @@
 ---
-title: "Test page"
-slug: "test"
+title: Test page
+slug: test
 categories:
-  - "test"
-summary: "This is a test page. Please don't mind it."
-date: "2025-09-10"
+  - test
+  - test2
+  - test3
+summary: This is a test page. Please don't mind it.
+date: '2025-09-25'
 ---
 ___
 images=
@@ -21,3 +23,5 @@ ___
 # Test
 
 Testing this is excruciatingly painful for my brain capacity. Lethal, even.
+Okay, testing to see if automatic date detection works. Will it update? Good question. 
+If this page has a different date it did.

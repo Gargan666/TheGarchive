@@ -9,9 +9,10 @@
 </head>
 
 <body>
+    <div id="custom-cursor"></div>
     <!-- Title Section -->
     <header>
-        <a href="index.html">
+        <a href="index.html" class="nogrowlink">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
                 style="width:200px; height:auto; vertical-align: middle;"
                 id="imglink">
@@ -30,73 +31,72 @@
         </canvas>
     </header>
 
-    <!-- Search Bar -->
+    <!-- navigation -->
     <br>
-    <div class="search-container" style="margin-bottom: 25px;">
-    <input type="text" id="search" placeholder="Search pages..." autocomplete="off">
-    <button id="searchBtn">
-        <img src="images/search.png" alt="Search">
-    </button>
-    <!-- Scrollable wrapper for results -->
-    <div id="results-wrapper">
-        <ul id="results"></ul>
-
-        <!-- Custom scrollbar -->
-        <div id="custom-scrollbar">
-            <div id="thumb"></div>
-        </div>
-
-        </div>
+    <div id="nav">
     </div>
+    <br>
+
+<!-- Main Entry Content -->
+<main id="app">
+    <!-- Markdown Content (main body) -->
+    <section id="entry-content"></section>
+
+    <!-- Sidebar -->
+    <aside id="entry-sidebar">
+    <div class="gallery-viewer">
+    <button id="gallery-prev">(</button>
+    <h3 id="gallery-title"></h3>
+    <button id="gallery-next">)</button>
+    <img id="gallery-image" src="" alt="">
+    </div>
+    <ul id="entry-attributes"></ul>
+    </aside>
+
+    <footer>
+    <span id="entry-title"></span>
+    <br>
+    <i id="entry-date"></i>
+    <br>
+    <p id="entry-categories"></p>
+    <br>
+    <div id="footer"> 
+    </div>
+    </footer>
+</main>
+
+    <!-- scripts -->
+    <div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script src="javascript/entry.js" defer></script>
+    <script src="javascript/text_obfuscate.js"></script>
+    <script src="javascript/autosave.js"></script>
+    
+    <script src="javascript/titlebar.js" defer></script>
     <script src="javascript/search.js" defer></script>
     <script src="javascript/scrollbar.js" defer></script>
 
-<!-- Main Entry Content -->
-<main id="app" class="entry-container">
-  <article class="entry">
-
-    <div class="entry-layout">
-      <!-- Markdown Content (main body) -->
-      <section id="entry-content" class="entry-content"></section>
-
-      <!-- Sidebar -->
-      <aside id="entry-sidebar">
-      <div class="gallery-viewer">
-      <button id="gallery-prev">(</button>
-      <h3 id="gallery-title"></h3>
-      <button id="gallery-next">)</button>
-      <img id="gallery-image" src="" alt="">
-      </div>
-      <ul id="entry-attributes"></ul>
-      </aside>
-
+    <script>
+    async function loadHTML(id, file) {
+      const res = await fetch(file);
+      document.getElementById(id).innerHTML = await res.text();
+    }
+    </script>
+    <script>
+    loadHTML("nav", "objects/navigation.html").then(() => {
+      // Now it's safe to use the searchbar
+      initSearch(); 
+      initScroll();
+    });
+    loadHTML("footer", "objects/footer.html").then(() => {
+      // Now it's safe to use the searchbar
+      initSearch(); 
+      initScroll();
+    });
+    </script>
+    <!--<script src="javascript/cursor.js" defer></script>-->
     </div>
-
-    <footer id="entry-header">
-      <p id="entry-title"></p>
-      <div class="meta">
-        <span id="entry-date"></span>
-        <span id="entry-categories"></span>
-      </div>
-    
-    <br>
-    <i>The Garchive</i><i id="symbols">A</i>
-    <i>- Any medical or mental injuries inflicted upon users of The Garchive we are not responsible for.</i>
-    <br>
-    If you have any other complaints or etc. for us, reach out at <a href="mailto:thegarchive@gmail.com">thegarchive@gmail.com</a>.
-
-    </footer>
-    
-  </article>
-</main>
-
-    <!-- External scripts -->
-    <script src="javascript/titlebar.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-    <script src="javascript/site.js" defer></script>
-    <script src="javascript/text_evil.js"></script>
-    <script src="javascript/autosave.js"></script>
 </body>
 
 </html>

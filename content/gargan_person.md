@@ -1,14 +1,15 @@
 ---
-title: "Gargan (real life)"
-slug: "garganirl"
+title: Gargan (real life)
+slug: garganirl
 categories:
-  - "People"
-summary: "Gargan, the real person"
-date: "2025-09-15"
+  - people
+summary: 'Gargan, the real person'
+date: '2025-09-25'
 ---
 ___
 images=
 [
+  { "src": "images/entry_images/garganirl/stop_staring_like_that.png", "title": "Distorted picture" },
   { "src": "images/entry_images/garganirl/representation.png", "title": "Portrait" }
 ]
 attributes=
@@ -20,7 +21,7 @@ attributes=
 ]
 ___
 # Gargan (real life)
-<i style="background-color:black;">Did you mean <a href="entry.html?slug=garganchar">Gargan (character)</a>?</i>
+<div class="similar-warn"><i>Did you mean <a href="entry.html?slug=garganchar">Gargan (character)</a>?</i></div>
 
 Gargan is in fact, a real person. Woah. He is instrumental to the production of this website, obviously.
 <br>

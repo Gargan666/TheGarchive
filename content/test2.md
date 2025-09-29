@@ -1,10 +1,10 @@
 ---
-title: "Test page 2"
-slug: "test2"
+title: Test page 2
+slug: test2
 categories:
-  - "test"
-summary: "This is a test page. Please don't mind it. 2"
-date: "2025-09-10"
+  - test
+summary: This is a test page. Please don't mind it. 2
+date: '2025-09-24'
 ---
 
 # Test

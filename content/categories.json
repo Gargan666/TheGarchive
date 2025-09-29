@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Characters",
+    "slug": "characters",
+    "description": "All character profiles."
+  },
+  {
+    "name": "People",
+    "slug": "people",
+    "description": "Real life people."
+  },
+  {
+    "name": "Places",
+    "slug": "places",
+    "description": "Locations and settings."
+  },
+  {
+    "name": "Artifacts",
+    "slug": "artifacts",
+    "description": "Special items or relics."
+  },
+  {
+    "name": "Test category",
+    "slug": "test",
+    "description": "Special items or relics."
+  },
+  {
+    "name": "Test category 2",
+    "slug": "test2",
+    "description": "Special items or relics."
+  },
+  {
+    "name": "Test category 3",
+    "slug": "test3",
+    "description": "Special items or relics."
+  }
+]

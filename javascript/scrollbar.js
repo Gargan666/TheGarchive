@@ -1,33 +1,33 @@
+async function initScroll() {
 const results = document.getElementById('results');
 const thumb = document.getElementById('thumb');
+const input = document.getElementById("search");
 
 function updateThumb() {
-    const contentHeight = results.scrollHeight;   // total scrollable content
-    const visibleHeight = results.clientHeight;   // visible viewport height
-    const scrollTop = results.scrollTop;          // current scroll position
+    const visibleHeight = results.clientHeight + 20;
+    const contentHeight = results.scrollHeight;
+    const scrollTop = results.scrollTop;
 
-    // Calculate thumb height proportional to visible content
-    // Minimum height of 20px for usability
+    // Handle case when content fits completely
+    if (contentHeight <= visibleHeight) {
+        thumb.style.top = '0px';
+        thumb.style.height = `${visibleHeight}px`;
+        return;
+    }
+
     const thumbHeight = Math.max((visibleHeight / contentHeight) * visibleHeight, 20);
     thumb.style.height = `${thumbHeight}px`;
 
-    // Calculate scroll ratio (0 = top, 1 = bottom)
-    const scrollRatio = scrollTop / (contentHeight - visibleHeight);
+    const normalizedScroll = Math.round((scrollTop / (contentHeight - visibleHeight) * 100)) / 100
+    const maxThumbTop = visibleHeight - thumbHeight + (15 / (thumbHeight / 20));
+    const thumbTop = normalizedScroll * maxThumbTop;
 
-    // Calculate thumb top position
-    // Ensure thumb does not go past the bottom
-    const maxThumbTop = visibleHeight - thumbHeight + (visibleHeight / 3.5);
-    const thumbTop = Math.min(scrollRatio * maxThumbTop, maxThumbTop);
-
-    // Apply thumb position
     thumb.style.top = `${thumbTop}px`;
 }
 
-// thumb pos sync
+// call when showing and scrolling results
 results.addEventListener('scroll', updateThumb);
-
-// initial thumb sizing
-updateThumb();
+input.addEventListener('focus', updateThumb);
 
 let isDragging = false;
 let startY, startScroll;
@@ -37,16 +37,21 @@ thumb.addEventListener('mousedown', (e) => {
     startY = e.clientY;
     startScroll = results.scrollTop;
     e.preventDefault();
+    thumb.className = 'dragging';
+    document.body.className = 'dragging';
 });
 
 document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     const delta = e.clientY - startY;
-    const scrollableHeight = results.scrollHeight - results.clientHeight;
+    const scrollableHeight = results.scrollHeight - results.clientHeight ;
     const thumbHeight = thumb.offsetHeight;
-    results.scrollTop = startScroll + (delta * scrollableHeight) / (results.clientHeight - thumbHeight);
+    results.scrollTop = startScroll + (delta * scrollableHeight) / (results.clientHeight - thumbHeight + (80 / (thumbHeight / 20)));
 });
 
 document.addEventListener('mouseup', () => {
     isDragging = false;
+    thumb.className = '';
+    document.body.className = '';
 });
+};

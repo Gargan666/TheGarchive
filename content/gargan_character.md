@@ -1,10 +1,10 @@
 ---
-title: "Gargan (character)"
-slug: "garganchar"
+title: Gargan (character)
+slug: garganchar
 categories:
-  - "Characters"
-summary: "Gargan, the character"
-date: "2025-09-15"
+  - characters
+summary: 'Gargan, the character'
+date: '2025-09-25'
 ---
 ___
 images=
@@ -21,7 +21,7 @@ attributes=
 ]
 ___
 # Gargan (character)
-<i style="background-color:black;">Did you mean <a href="entry.html?slug=garganirl">Gargan (real life)</a>?</i>
+<div class="similar-warn"><i>Did you mean <a href="entry.html?slug=garganirl">Gargan (real life)</a>?</i></div>
 <br>
 <br>
 Both the online representation of Gargan and a character in and of itself. He is an alternate universe version of real life Gargan.

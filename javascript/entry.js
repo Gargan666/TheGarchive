@@ -126,6 +126,13 @@ async function initEntry() {
   const categoriesEl = document.getElementById('entry-categories');
   const contentEl = document.getElementById('entry-content');
 
+  if (categoriesEl && item.categories) {
+  categoriesEl.innerHTML = "Categories: " + item.categories
+    .map(c => `<a href="category.html?category=${encodeURIComponent(c)}">${c}</a>`)
+    .join(" - ");
+  }
+
+
   if (thumbEl) thumbEl.alt = item.title || 'Page Title';
   if (titleEl) titleEl.textContent = item.title || '';
   if (summaryEl) summaryEl.textContent = item.summary || '';
