@@ -1,7 +1,5 @@
-// Save slug/category from any clicked link (works for dynamically added links)
-// Put this near the end of your site-wide JS (or in its own file loaded on every page)
 (() => {
-  function saveFromHref(href, push = true) {
+  function saveFromHref(href) {
     if (!href) return;
     try {
       const url = new URL(href, location.href);
@@ -11,16 +9,10 @@
       if (slug) {
         sessionStorage.setItem('currentSlug', slug);
         console.log('Saved slug from link:', slug);
-        if (push) {
-          history.pushState({ slug }, '', `entry.html?slug=${encodeURIComponent(slug)}`);
-        }
       }
       if (category) {
         sessionStorage.setItem('currentCategory', category);
         console.log('Saved category from link:', category);
-        if (push) {
-          history.pushState({ category }, '', `category.html?category=${encodeURIComponent(category)}`);
-        }
       }
     } catch (err) {
       console.warn('Could not parse href when saving slug/category:', href, err);
@@ -29,21 +21,21 @@
 
   // Generic handler for all link clicks
   function linkClickHandler(e) {
-    const link = e.target && e.target.closest && e.target.closest('a[href]');
+    const link = e.target?.closest?.('a[href]');
     if (!link) return;
+
     const hrefAttr = link.getAttribute('href');
-    saveFromHref(hrefAttr, true);
-    // do not preventDefault — let navigation continue normally
+    saveFromHref(hrefAttr);
+
+    // ⚠️ Do NOT call preventDefault.
+    // Let the browser navigate normally.
   }
 
-  // Capture phase listeners
+  // Just one event listener is enough
   document.addEventListener('click', linkClickHandler, { capture: true });
-  document.addEventListener('auxclick', linkClickHandler, { capture: true });
-  document.addEventListener('mousedown', (e) => {
-    if (e.button === 0 || e.button === 1) linkClickHandler(e);
-  }, { capture: true });
 
-  // Handle back/forward navigation
+  // If you still want SPA-like back/forward without reloads,
+  // keep this. Otherwise you can remove it.
   window.addEventListener('popstate', (event) => {
     console.log('Popstate event:', event.state);
 
@@ -59,7 +51,4 @@
       if (typeof renderCategory === 'function') renderCategory();
     }
   });
-
-  // Optional helper for debugging in console
-  window.__saveFromHref = saveFromHref;
 })();

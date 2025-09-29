@@ -44,11 +44,9 @@
     "slug": "test",
     "file": "test.md",
     "summary": "This is a test page. Please don't mind it.",
-    "date": "2025-09-25",
+    "date": "2025-09-29",
     "categories": [
-      "test",
-      "test2",
-      "test3"
+      "test"
     ]
   },
   {

@@ -23,15 +23,5 @@
     "name": "Test category",
     "slug": "test",
     "description": "Special items or relics."
-  },
-  {
-    "name": "Test category 2",
-    "slug": "test2",
-    "description": "Special items or relics."
-  },
-  {
-    "name": "Test category 3",
-    "slug": "test3",
-    "description": "Special items or relics."
   }
 ]

@@ -3,10 +3,8 @@ title: Test page
 slug: test
 categories:
   - test
-  - test2
-  - test3
 summary: This is a test page. Please don't mind it.
-date: '2025-09-25'
+date: '2025-09-29'
 ---
 ___
 images=
