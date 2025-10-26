@@ -30,6 +30,16 @@
     ]
   },
   {
+    "title": "Garry",
+    "slug": "garry",
+    "file": "garry.md",
+    "summary": "Centa's online representation.",
+    "date": "2025-10-26",
+    "categories": [
+      "characters"
+    ]
+  },
+  {
     "title": "Test page",
     "slug": "test",
     "file": "test.md",
