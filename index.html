@@ -9,7 +9,23 @@
 </head>
 
  <body>
-    <div id="custom-cursor"></div>
+    <div id="immersion-box">
+    <div id="immersion-query">
+    <h1>! IMMERSION MODE !</h1>
+    <p>
+      We request your consent to access some sensitive website and browser properties.<br>
+      Upon allowing this, the website will be allowed to modify and control the following:
+      <ul>
+        <li>Fullscreen mode</li>
+      </ul>
+    </p>
+    <p>
+      <button id="yesBtn">Allow</button>
+      <button id="noBtn">Deny</button>
+    </p>
+    </div>
+    <div id="immersion-bg" style="background-color:black;position:fixed;width:110vw;height:110vh;z-index:99999;transform:translate(-10px,-10px);opacity:0.5;"></div>
+    </div>
 
     <!--title section-->
     <header style="text-align: center;">
@@ -74,7 +90,7 @@
         <i>The best of this terrible website</i>
         <br>
         <br>
-        <a href="hidden_pages/cage.html">example link text</a>
+        <a href="#" onClick="window.open('hidden_pages/cage.html')">example link text</a>
         <br>example link text
         <br>example link text
         </aside>
@@ -85,17 +101,18 @@
     <!-- ----- SCRIPTS ----- -->
     <div>
     <script src="javascript/autosave.js" defer></script>
+    <script src="javascript/gamestate.js" defer></script>
 
     <script src="javascript/titlebar.js" defer></script>
     <script src="javascript/search.js" defer></script>
     <script src="javascript/scrollbar.js" defer></script>
+    
+    <!--object loader (same across different pages)-->
     <script>
     async function loadHTML(id, file) {
       const res = await fetch(file);
       document.getElementById(id).innerHTML = await res.text();
     }
-    </script>
-    <script>
     loadHTML("nav", "objects/navigation.html").then(() => {
       // Now it's safe to use the searchbar
       initSearch(); 
@@ -107,7 +124,8 @@
       initScroll();
     });
     </script>
-    <!--<script src="javascript/cursor.js" defer></script>-->
+    
+    <script src="javascript/immersion.js" defer></script>
     </div>
 
  </body>

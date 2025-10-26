@@ -30,16 +30,6 @@
     ]
   },
   {
-    "title": "This is a long test this is a long test this is a long test",
-    "slug": "test3",
-    "file": "longtest.md",
-    "summary": "This is a test page. Please don't mind it. 3",
-    "date": "2025-09-24",
-    "categories": [
-      "test"
-    ]
-  },
-  {
     "title": "Test page",
     "slug": "test",
     "file": "test.md",
@@ -60,30 +50,10 @@
     ]
   },
   {
-    "title": "Test page 4",
-    "slug": "test4",
-    "file": "test4 copy 2.md",
-    "summary": "This is a test page. Please don't mind it. 4",
-    "date": "2025-09-24",
-    "categories": [
-      "test"
-    ]
-  },
-  {
-    "title": "Test page 4",
-    "slug": "test4",
-    "file": "test4 copy 3.md",
-    "summary": "This is a test page. Please don't mind it. 4",
-    "date": "2025-09-24",
-    "categories": [
-      "test"
-    ]
-  },
-  {
-    "title": "Test page 4",
-    "slug": "test4",
-    "file": "test4 copy.md",
-    "summary": "This is a test page. Please don't mind it. 4",
+    "title": "This is a long test this is a long test this is a long test",
+    "slug": "test3",
+    "file": "test3.md",
+    "summary": "This is a test page. Please don't mind it. 3",
     "date": "2025-09-24",
     "categories": [
       "test"

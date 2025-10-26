@@ -2,17 +2,17 @@
   {
     "name": "Characters",
     "slug": "characters",
-    "description": "All character profiles."
+    "description": "There are many characters created by both Gargan and his associates. This page lists all of them."
   },
   {
     "name": "People",
     "slug": "people",
-    "description": "Real life people."
+    "description": "Lots of people are involved with this website and with Gargan. This page lists most of them."
   },
   {
     "name": "Places",
     "slug": "places",
-    "description": "Locations and settings."
+    "description": "Places both fictional and real. Either way, these locations are important to either specific people or characters."
   },
   {
     "name": "Artifacts",

@@ -170,6 +170,11 @@ async function renderCategory() {
   if (title) {
     title.textContent = currentCategory.name || '';
   }
+  // description render
+  const desc = document.getElementById('category-description');
+  if (desc) {
+    desc.textContent = currentCategory.description || '';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

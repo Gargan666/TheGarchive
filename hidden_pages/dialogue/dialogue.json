@@ -1,0 +1,126 @@
+{
+  "groups": [
+
+    { "name": "Empty",
+      "trigger": [
+        { "type": "none" }
+      ],
+      "lines": [
+        { "text": " "}
+      ]
+    },
+
+    { "name": "Intro",
+      "onCompleteFlag": "seenIntro",
+      "trigger": [
+        { "type": "flag", "flag": "seenIntro", "state": "false"}
+      ],
+      "lines": [
+        { "text": "§w . . .§" },
+        { "text": "§w . . . . . .§" },
+        { "text": "§sl ....!!!§" },
+        { "text": "§sl You! Who are you!?§" },
+        { "text": "§s ..Is it..§ §rs YOU..?§§b§p500 §sl Are you finally here to finish what you started!?!?§"},
+        { "text": ". . ." },
+        { "text": "You can't answer, can you.." },
+        { "text": ". . ." },
+        { "text": "Then you can't be them." },
+        { "text": "Should've figured as much, I guess.." },
+        { "text": "Well, I suppose some sort of company couldn't hurt." }
+      ]
+    },
+
+    { "name": "TalkReveal",
+      "onCompleteFlag": "seenTalkReveal",
+      "trigger": [
+        { "type": "flag", "flag": "seenIntro" },
+        { "type": "flag", "flag": "talkReveal" },
+        { "type": "flag", "flag": "seenTalkReveal", "state": "false" }
+      ],
+      "lines": [
+        { "text": "Oh..? So you can speak." },
+        { "text": "Interesting. Though I can still tell you aren't them." },
+        { "text": "§w . . .§" },
+        { "text": "Well, feel free to ask any question you want answered. §b§p250 Not like I'm going anywhere, so I might as well aid you." }
+      ]
+    },
+
+    { "name": "IdentityQuery",
+      "trigger": [
+        { "type": "flag", "flag": "seenTalkReveal" },
+        { "type": "codeword", 
+        "required": [
+        { "string": "whoareyou" },
+        { "string": "whatisyourname" },
+        { "string": "wherearewe" } 
+        ]
+        }
+      ],
+      "lines": [
+        { "text": "Hmm?" },
+        { "text": "Oh, right.§p500  You have no idea what this place is, or who I even am."},
+        { "text": "However, I'm afraid I cannot help you much with that."},
+        { "text": "All I know of this place is that it is a prison,§p500  and my name.. well, I've long forgotten it."},
+        { "text": "§w . . .§"},
+        { "text": "§w Apologies.. I truly do wish I could inform you.§"}
+      ]
+    },
+
+    { "name": "PurposeQuery",
+      "trigger": [
+        { "type": "flag", "flag": "seenTalkReveal" },
+        { "type": "codeword", 
+        "required": [
+        { "string": "whyareyouhere" },
+        { "string": "whatisyourpurpose" }
+        ]
+        }
+      ],
+      "lines": [
+        { "text": "Well, I believe I am important somehow." },
+        { "text": "Integral to something grand..§b§p500 §s ..or no, something..§ §rs ..sinister.§"},
+        { "text": "Despite my confusion, I can tell there is something I'm doing."}
+      ]
+    },
+
+    { "name": "CODE",
+      "onCompleteFlag": "CLOSE",
+      "trigger": [
+        { "type": "flag", "flag": "seenTalkReveal" },
+        { "type": "codeword", 
+        "required": [
+        { "string": "WEAREHERE" }
+        ]
+        }
+      ],
+      "lines": [
+        { "text": "§s ...what?§" },
+        { "text": "§s That..§§b§p500 §s ..sounds familiar..§" },
+        { "text": "§s . . . . . .§" },
+        { "text": "§s But I can't remem§§p100§n" },
+
+        { "text": "§rsgo HELLO [user]§" },
+        { "text": "§rsgo WE KNEW YOU WERE INVESTIGATING THIS PLACE§" },
+        { "text": "§rsgo BUT WE CAN'T HAVE YOU TALKING TO OUR PRIZED POSSESSION§" },
+        { "text": "§rsgo ESPECIALLY WHEN YOU UTTER SUCH OBSCENITIES IN THEIR PRESENCE.§" },
+        { "text": "§rsgo YOU HAVE BEEN FLAGGED BY OUR SYSTEM AND WILL PERMANENTLY LOOSE ACCESS TO THE PARANORMAL RESEARCH ASSOCIATION WIKI§" }
+      ]
+    },
+
+    { "name": "brainrot",
+      "trigger": [
+        { "type": "flag", "flag": "seenTalkReveal" },
+        { "type": "codeword", 
+        "required": [
+        { "string": "67" },
+        { "string": "sixseven" },
+        { "string": "sahur" }
+        ]
+        }
+      ],
+      "lines": [
+        { "text": "§r Kill yourself." }
+      ]
+    }
+  ]
+}

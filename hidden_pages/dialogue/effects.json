@@ -1,0 +1,26 @@
+{
+  "r": {
+    "className": "effect-red"
+  },
+  "s": {
+    "className": "effect-shake"
+  },
+  "l": {
+    "className": "effect-loud"
+  },
+  "w": {
+    "className": "effect-wave"
+  },
+
+
+
+
+  
+  "g": {
+    "className": "effect-glitch"
+  },
+  
+  "o": {
+    "className": "THE-ORACLE"
+  }
+}

@@ -1,26 +1,30 @@
 @font-face { font-family: Gargling-fried; src: url("../images/fonts/Gargling-fried.ttf"); } 
 @font-face { font-family: Gargling-symbols; src: url("../images/fonts/Gargling-symbols.ttf"); } 
 
-/* * { cursor: none !important; } */
-
-html {
-background-image: url('../images/background.png');
-background-repeat: repeat;
-background-attachment: local;
-animation: scrollBackground 70s linear infinite;
-}
-body {
-/*anti-aliasing disabling*/
+* { 
 image-rendering: -moz-crisp-edges;
 image-rendering: -o-crisp-edges;
 image-rendering: -webkit-optimize-contrast;
 image-rendering: pixelated;
 -ms-interpolation-mode: nearest-neighbor;
+font-family: "Gargling-fried"; 
+}
 
-/*misc*/
-font-family: "Gargling-fried";
+html {
+background-image: url('../images/background.png');
+background-repeat: repeat;
+background-attachment: local;
+
+animation: scrollBackground 70s linear infinite;
+}
+body {
 cursor: url('../images/cursors/default.ico') 0 0, default;
 }
+.disabled {
+  display: none;
+}
+
+/* -------- CURSOR -------- */
 body.dragging {
   cursor: url('../images/cursors/grabber.ico') 13 4, grabbing;
 }
@@ -34,13 +38,56 @@ input, textarea {
     cursor: url('cursors/wait-cursor.png'), wait;
 }
 
-/*#custom-cursor {
-    position: fixed;
-    pointer-events: none;
-    image-rendering: pixelated;
-    z-index: 9999;
-    background-size: cover;
-}*/
+/* -------- POPUPS -------- */
+.popup-fade {
+  animation: popup-fade 2s ease-in forwards
+}
+@keyframes popup-fade {
+  0% {
+    width: fit-content;
+    height: fit-content;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
+#immersion-query {
+  height: 400px;
+  width: 550px;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(19, 19, 19));
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+
+  padding: 10px;
+  text-align: center;
+  align-content: center;
+  color: white;
+}
+#immersion-query ul {
+  color: white;
+  list-style-position: inside;
+  align-content: center;
+  padding: 0;
+}
+
+#yesBtn, #noBtn {
+  border-radius: 0;
+  border-style: none;
+  width: 30%;
+  height: 50px;
+  font-size: 32px;
+  padding: 7px;
+}
 
 /* -------- IMAGES -------- */
 #imglink {
@@ -60,17 +107,17 @@ a {
   color: rgb(97, 143, 69);
   line-height: 100%;
   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-position: 50%, 100%;
-  overflow-x: visible;
   background-repeat: no-repeat;
+  background: none;
 }
-a:hover:not(.nogrowlink) {
+a:hover:not(.nogrowlink, .catEntBox, .navBtn) {
   text-decoration: solid;
   color: rgb(226, 255, 183);
   font-size: 110%;
   line-height: 90%;
-  background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-  background-size: 200%, 200px;
+  padding: 5px;
+  background-color: black;
+  background-size: 100%, 50%;
 }
 .obfuscated {
 background-color: black;
@@ -87,7 +134,6 @@ font-weight: normal;
 }
 ul {
   list-style: square;
-  color: rgb(0, 0, 0);
 }
 
 /* -------- SEARCH -------- */
@@ -159,7 +205,7 @@ input:focus {
   list-style-position: inside; /* ensures bullets are inside the box */
   text-overflow: ellipsis;    /* add "..." at cutoff */
   white-space: nowrap;        /* keep the text on one line */
-  overflow-x: hidden;           /* hide overflow beyond width */
+  overflow: hidden;           /* hide overflow beyond width */
   color: rgb(97, 143, 69);
 }
 #results li:first-child {
@@ -210,7 +256,7 @@ header {
   flex-direction: row;
   white-space: nowrap;
 }
-.navBtn {
+.navBtn button {
   height: 37.5px;
   width: 248.5px;
   flex: 1;
@@ -225,7 +271,7 @@ header {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.navBtn:hover {
+.navBtn button:hover {
   background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
 }
 #indexbody,
@@ -315,12 +361,18 @@ button:hover:not(#gallery-prev-disabled, #gallery-next-disabled) {
 }
 #entry-attributes {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 #entry-attributes li {
-  margin: 5px 0;
-  font-size: 14px;
+  text-align: left;
+  margin: 4px 0;
+  font-size: 20px;
+  padding: 10px;
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #595959;
+  background-color: #888888;
 }
 #entry-date {
 color: rgb(75, 75, 75);
