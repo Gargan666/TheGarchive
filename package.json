@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Gargan666/Gargan_Website#readme",
   "dependencies": {
+    "countapi-js": "^1.0.2",
     "express": "^5.1.0",
     "gray-matter": "^4.0.3",
     "node-fetch": "^3.3.2",

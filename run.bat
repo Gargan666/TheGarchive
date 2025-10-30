@@ -1,9 +1,5 @@
 @ECHO OFF
 
-ECHO Starting side proxy server...
-start "" /min cmd /k "node proxy.js"
-ECHO Proxy server started.
-
 ECHO Starting server...
 start "" /min cmd /k "npx serve . -c serve.json"
 
@@ -15,6 +11,5 @@ IF ERRORLEVEL 1 (
     GOTO waitLoop
 )
 
-start "" "http://localhost:3001"
 start "" "http://localhost:3000"
 ECHO Server has been started.

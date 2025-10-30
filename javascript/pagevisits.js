@@ -1,18 +1,19 @@
+// Include CountAPI-JS via CDN in HTML:
+// <script src="https://cdn.jsdelivr.net/npm/countapi-js/dist/index.umd.js"></script>
+
 const NAMESPACE = "THEGARCHIVE"; // CountAPI namespace
-const COUNT_API_LOCAL = "http://localhost:3001/countapi";
-const COUNT_API_BASE = "https://api.countapi.xyz";
 const visitData = {}; // Local storage for fetched counter values
 
-async function countAPIRequest(endpoint) {
-  const url = `${COUNT_API_BASE}/${endpoint}`;
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-    return await response.json();
-  } catch (err) {
-    console.error("CountAPI request error:", err);
-    return null;
-  }
+// Detect hosting environment
+const host = window.location.hostname;
+let isLocalhost = false;
+if (host === "localhost" || host === "127.0.0.1") {
+  console.log("Running on localhost");
+  isLocalhost = true;
+} else if (host.endsWith("github.io")) {
+  console.log("Running on GitHub Pages");
+} else {
+  console.log("Running on another host:", host);
 }
 
 console.log("THEGARCHIVE storage initialized.");
@@ -31,9 +32,11 @@ function detectCurrentPage() {
   if (slug) {
     currentPage.type = "entry";
     currentPage.key = `entry:${slug}`;
+    sessionStorage.setItem("currentSlug", slug);
   } else if (category) {
     currentPage.type = "category";
     currentPage.key = `category:${category}`;
+    sessionStorage.setItem("currentCategory", category);
   } else {
     const pathName = url.pathname.replace(/\/+$/, "");
     const fileName = pathName.split("/").pop() || "index";
@@ -43,7 +46,7 @@ function detectCurrentPage() {
 
   console.log(`Detected page → Type: ${currentPage.type}, Key: ${currentPage.key}`);
 
-  // --- Session-safe visit tracking ---
+  // Session-safe visit tracking
   const alreadyVisited = sessionStorage.getItem("visitedPageKey");
   if (alreadyVisited === currentPage.key) {
     console.log("Page already registered this session; will not count again.");
@@ -55,41 +58,28 @@ function detectCurrentPage() {
 }
 
 detectCurrentPage();
-
 window.addEventListener("hashchange", detectCurrentPage);
 window.addEventListener("popstate", detectCurrentPage);
 
+// --- CountAPI helpers ---
 async function ensureCounterExists(pageKey) {
   if (!pageKey) return;
+  if (isLocalhost) {
+    // Mock counter locally for testing
+    visitData[pageKey] = visitData[pageKey] || 0;
+    return;
+  }
 
   try {
-    const encodedKey = encodeURIComponent(pageKey);
-    const getUrl = `${COUNT_API_BASE}/get/${encodedKey}`;
-    const response = await fetch(getUrl);
-
-    // Log raw text for debugging
-    const text = await response.text();
-    console.log(`Raw GET response for ${pageKey}:`, text);
-
-    if (!response.ok) {
-      // Counter doesn't exist → create it
-      console.log(`Counter not found for ${pageKey}, creating...`);
-      const createUrl = `${COUNT_API_BASE}/create?namespace=${NAMESPACE}&key=${encodedKey}&value=0`;
-      const createResponse = await fetch(createUrl);
-
-      // Log raw text for create
-      const createText = await createResponse.text();
-      console.log(`Raw CREATE response for ${pageKey}:`, createText);
-
-      const createData = JSON.parse(createText); // now parse safely
-      visitData[pageKey] = createData.value ?? 0;
-      return;
+    const exists = await countapi.get(NAMESPACE, pageKey).catch(() => null);
+    if (!exists) {
+      const created = await countapi.create(NAMESPACE, pageKey, 0);
+      visitData[pageKey] = created.value;
+      console.log(`Counter created for ${pageKey}:`, created.value);
+    } else {
+      visitData[pageKey] = exists.value;
+      console.log(`Counter exists for ${pageKey}:`, exists.value);
     }
-
-    // Counter exists → parse normally
-    const data = JSON.parse(text);
-    console.log(`Parsed JSON for ${pageKey}:`, data);
-    visitData[pageKey] = data.value;
   } catch (err) {
     console.error("Error ensuring counter exists:", err);
   }
@@ -98,25 +88,24 @@ async function ensureCounterExists(pageKey) {
 async function incrementVisit(pageKey) {
   if (!pageKey) return;
 
+  if (isLocalhost) {
+    // Local increment
+    visitData[pageKey] = (visitData[pageKey] || 0) + 1;
+    console.log(`Local visit counted for ${pageKey}. Total: ${visitData[pageKey]}`);
+    return;
+  }
+
   try {
-    const encodedKey = encodeURIComponent(pageKey);
-    const hitUrl = `${COUNT_API_BASE}/hit/${encodedKey}`;
-    const response = await fetch(hitUrl);
-
-    // Log raw text for debugging
-    const text = await response.text();
-    console.log(`Raw HIT response for ${pageKey}:`, text);
-
-    const data = JSON.parse(text);
-    visitData[pageKey] = data.value;
-    console.log(`Visit counted for ${pageKey}. Total visits: ${data.value}`);
+    const result = await countapi.hit(NAMESPACE, pageKey);
+    visitData[pageKey] = result.value;
+    console.log(`Visit counted for ${pageKey}. Total visits: ${result.value}`);
   } catch (err) {
     console.error("Error incrementing visit count:", err);
   }
 }
+
 // Initialize counter and increment visit (if first visit this session)
 if (currentPage.shouldTrack) {
-  ensureCounterExists(currentPage.key).then(() => {
-    incrementVisit(currentPage.key);
-  });
+  ensureCounterExists(currentPage.key).then(() => incrementVisit(currentPage.key));
 }
+console.log();
