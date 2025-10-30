@@ -1,5 +1,6 @@
 const NAMESPACE = "THEGARCHIVE"; // CountAPI namespace
-const COUNT_API_BASE = "http://localhost:3001/countapi";
+const COUNT_API_LOCAL = "http://localhost:3001/countapi";
+const COUNT_API_BASE = "https://api.countapi.xyz";
 const visitData = {}; // Local storage for fetched counter values
 
 async function countAPIRequest(endpoint) {
