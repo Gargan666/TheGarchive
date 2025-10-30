@@ -13,7 +13,8 @@
       } else {
         const storedSlug = sessionStorage.getItem('currentSlug');
         if (storedSlug) {
-          console.log('Using slug from storage (no URL slug):', storedSlug);
+          console.log('No URL slug. Removing stored slug.');
+          sessionStorage.removeItem('currentSlug');
         }
       }
 
@@ -25,7 +26,8 @@
       } else {
         const storedCategory = sessionStorage.getItem('currentCategory');
         if (storedCategory) {
-          console.log('Using category from storage (no URL category):', storedCategory);
+          console.log('No URL category. Removing stored category.');
+          sessionStorage.removeItem('currentCategory');
         }
       }
 

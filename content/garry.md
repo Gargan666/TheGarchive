@@ -24,7 +24,7 @@ ___
 # Garry
 
 The online representation of Centa, as well as it's own character. An undead, alternate version of the real life Centa.<br>
-His name (at least in this universe) is Garry Oldum, although one may just refer to him as Garry.
+His name (at least in this universe) is Garry Oldum, although one may simply refer to him as Garry.
 
 # Details
 

@@ -8,27 +8,12 @@
     <link rel="stylesheet" href="styles/style_main.css">
 </head>
 
- <body>
-    <div id="immersion-box">
-    <div id="immersion-query">
-    <h1>! IMMERSION MODE !</h1>
-    <p>
-      We request your consent to access some sensitive website and browser properties.<br>
-      Upon allowing this, the website will be allowed to modify and control the following:
-      <ul>
-        <li>Fullscreen mode</li>
-      </ul>
-    </p>
-    <p>
-      <button id="yesBtn">Allow</button>
-      <button id="noBtn">Deny</button>
-    </p>
-    </div>
-    <div id="immersion-bg" style="background-color:black;position:fixed;width:110vw;height:110vh;z-index:99999;transform:translate(-10px,-10px);opacity:0.5;"></div>
-    </div>
+<body>
 
-    <!--title section-->
-    <header style="text-align: center;">
+<div id="immersion-box"></div>
+
+<!--title section-->
+<header style="text-align: center;">
         <a href="index.html" class="nogrowlink">
         <img src="images/garcon_archivetext_small.png" alt="Homepage" id="imglink">
         </a>
@@ -47,16 +32,15 @@
             data-bgcolor="black">
         </canvas>
         
-    </header>
+</header>
 
-    <!--navigation-->
-    <br>
-    <div id="nav">
-    </div>
-    <br>
+<!--navigation-->
+<br>
+<div id="nav"></div>
+<br>
 
-    <!--page body-->
-    <div id="indexbody">
+<!--page body-->
+<div id="indexbody">
         <!--main text-->
         <section>
         <i>"Uh.. who?"</i>
@@ -96,38 +80,42 @@
         </aside>
 
         <footer id="footer"></footer>
-    </div>
+</div>
 
-    <!-- ----- SCRIPTS ----- -->
-    <div>
-    <script src="javascript/autosave.js" defer></script>
-    <script src="javascript/gamestate.js" defer></script>
+</body>
 
-    <script src="javascript/titlebar.js" defer></script>
-    <script src="javascript/search.js" defer></script>
-    <script src="javascript/scrollbar.js" defer></script>
-    
-    <!--object loader (same across different pages)-->
+<!-- ----- SCRIPTS ----- -->
+<div>
+
+    <!--object loader-->
     <script>
     async function loadHTML(id, file) {
       const res = await fetch(file);
       document.getElementById(id).innerHTML = await res.text();
     }
+    
     loadHTML("nav", "objects/navigation.html").then(() => {
-      // Now it's safe to use the searchbar
-      initSearch(); 
-      initScroll();
+      initSearchUI();
     });
     loadHTML("footer", "objects/footer.html").then(() => {
-      // Now it's safe to use the searchbar
-      initSearch(); 
-      initScroll();
+    });
+    loadHTML("immersion-box", "objects/immersion.html").then(() => {
+      immersionConsent();
     });
     </script>
-    
-    <script src="javascript/immersion.js" defer></script>
-    </div>
 
- </body>
+    <script src="javascript/autosave.js" defer></script>
+    <script src="javascript/gamestate.js" defer></script>
+    <script src="javascript/pagevisits.js" defer></script>
+
+    <script src="javascript/titlebar.js" defer></script>
+    
+    <script src="javascript/searchEngine.js" defer></script>
+    <script src="javascript/searchUI.js" defer></script>
+    
+    <!--sensitive features access request-->
+    <script src="javascript/immersion.js" defer></script>
+
+</div>
 
 </html>

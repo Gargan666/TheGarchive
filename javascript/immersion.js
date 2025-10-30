@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+async function immersionConsent() {
 
   const box = document.getElementById("immersion-box");
   const textbox = document.getElementById("immersion-query");
@@ -40,4 +40,4 @@ noBtn.addEventListener("click", () => {
   box.className = 'disabled';
 }
 
-});
+};

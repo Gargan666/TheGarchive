@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <div id="custom-cursor"></div>
-    <!-- Title Section -->
-    <header>
+
+<div id="immersion-box"></div>
+
+<!-- Title Section -->
+<header>
         <a href="index.html" class="nogrowlink">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
                 style="width:200px; height:auto; vertical-align: middle;"
@@ -29,12 +31,12 @@
             data-color="gray"
             data-bgcolor="black">
         </canvas>
-    </header>
+</header>
 
-    <!-- navigation -->
-    <br>
-    <div id="nav"></div>
-    <br>
+<!-- navigation -->
+<br>
+<div id="nav"></div>
+<br>
 
 <!-- Main category content -->
 <main id="app">
@@ -47,38 +49,43 @@
   <footer id="footer"></footer>
 </main>
 
+</body>
 
-    <!-- External scripts -->
-    <div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-    <script src="javascript/category.js" defer></script>
-    <script src="javascript/text_obfuscate.js"></script>
-    <script src="javascript/autosave.js"></script>
+<!-- External scripts -->
+<div>
 
-    <script src="javascript/search.js" defer></script>
-    <script src="javascript/scrollbar.js" defer></script>
-    <script src="javascript/titlebar.js" defer></script>
-
-    <!--object loader (same across different pages)-->
+    <!--object loader-->
     <script>
     async function loadHTML(id, file) {
       const res = await fetch(file);
       document.getElementById(id).innerHTML = await res.text();
     }
     loadHTML("nav", "objects/navigation.html").then(() => {
-      // Now it's safe to use the searchbar
-      initSearch(); 
-      initScroll();
+      initSearchUI();
     });
     loadHTML("footer", "objects/footer.html").then(() => {
-      // Now it's safe to use the searchbar
-      initSearch(); 
-      initScroll();
+    });
+    loadHTML("immersion-box", "objects/immersion.html").then(() => {
+      immersionConsent();
     });
     </script>
+
+    <script src="javascript/autosave.js" defer></script>
+    <script src="javascript/gamestate.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js" defer></script>
+    <script src="javascript/category.js" defer></script>
+    <script src="javascript/text_obfuscate.js" defer></script>
+
+    <script src="javascript/titlebar.js" defer></script>
+
+    <script src="javascript/searchEngine.js" defer></script>
+    <script src="javascript/searchUI.js" defer></script>
     
-    </div>
-</body>
+    <!--sensitive features access request-->
+    <script src="javascript/immersion.js" defer></script>
+    
+</div>
 
 </html>

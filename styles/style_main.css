@@ -22,6 +22,7 @@ cursor: url('../images/cursors/default.ico') 0 0, default;
 }
 .disabled {
   display: none;
+  pointer-events: none;
 }
 
 /* -------- CURSOR -------- */
@@ -78,6 +79,15 @@ input, textarea {
   list-style-position: inside;
   align-content: center;
   padding: 0;
+}
+#immersion-bg {
+background-color: black;
+position: fixed;
+width: 110vw;
+height: 110vh;
+z-index: 99999;
+transform: translate(-10px,-10px);
+opacity: 0.5;
 }
 
 #yesBtn, #noBtn {
@@ -170,54 +180,71 @@ input:focus {
 #gallery-next:hover {
     background-color: #595959;
 }
+
 /* results */
 #results-wrapper {
   position: absolute;
-  width: 223px;
-  max-height: 200px;       /* max height for content */
-  align-content:center;
-  overflow: hidden;         /* hide native scrollbar */
+  max-width: 300px;
+  min-width: 227px;
+  max-height: 360px;
+
+  width: 227px;
+  height: 360px;
+
+  align-content: center;
+  overflow: hidden;
+  padding-bottom: 40px;
+  padding-top: 10px;
+
   background-color: black;
   color: white;
-  font-size: 16px;
-  padding-left: 5px;
-  margin-top: 0px;
+
   z-index: 1000;
   outline-style: solid;
   outline-width: 2px;
   outline-color: #888;
-  flex: 1;
+
+  resize: both;
+}
+#results-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  pointer-events: none; /* ensures it's not interactive */
+  box-shadow: inset 0 0 0 20px black; /* creates a 10px “cutoff edge” */
 }
 #results-wrapper:empty {
-  display: none;
+resize: none;
+padding-block: 0px;
+height: 0;
 }
+
 #results {
-  padding: 0px 10px 0px 20px; /* leave space for scrollbar */
-  max-height: 120px;
   max-width: 90%;
-  overflow-y: scroll;
+  height: inherit;
+
+  font-size: 16px;
   list-style: square;
+  overflow-y: scroll;
 
   /* Hide native scrollbars */
   scrollbar-width: none;      /* Firefox */
 }
+
 #results li {
   list-style-position: inside; /* ensures bullets are inside the box */
   text-overflow: ellipsis;    /* add "..." at cutoff */
   white-space: nowrap;        /* keep the text on one line */
   overflow: hidden;           /* hide overflow beyond width */
   color: rgb(97, 143, 69);
+  transform: translateX(-20px);
 }
 #results li:first-child {
 font-weight: bolder;
 font-size: larger;
 }
-#results:empty {
-  display: none;
-}
-#results::-webkit-scrollbar {
-  display: none;               /* Chrome, Safari, Edge */
-}
+
 /* scrollbar */
 #custom-scrollbar {
   position: absolute;
