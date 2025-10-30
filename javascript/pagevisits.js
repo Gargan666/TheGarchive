@@ -1,10 +1,5 @@
-// ==============================
-// THEGARCHIVE — Full Visit Tracking Script
-// ==============================
-
-// --- Step 1: Storage setup ---
 const NAMESPACE = "THEGARCHIVE"; // CountAPI namespace
-const COUNT_API_BASE = "https://api.countapi.xyz";
+const COUNT_API_BASE = "http://localhost:3001/countapi";
 const visitData = {}; // Local storage for fetched counter values
 
 async function countAPIRequest(endpoint) {
@@ -21,7 +16,6 @@ async function countAPIRequest(endpoint) {
 
 console.log("THEGARCHIVE storage initialized.");
 
-// --- Step 2: Page detection ---
 const currentPage = {
   type: null,    // "static" | "entry" | "category"
   key: null,     // e.g. "static:index", "entry:slug", "category:name"
@@ -59,65 +53,66 @@ function detectCurrentPage() {
   }
 }
 
-// Run detection on page load
 detectCurrentPage();
 
-// Optional: re-detect on SPA navigation if needed
 window.addEventListener("hashchange", detectCurrentPage);
 window.addEventListener("popstate", detectCurrentPage);
 
-// --- Step 3: Ensure counters exist ---
 async function ensureCounterExists(pageKey) {
-  if (!pageKey) {
-    console.warn("No page key provided for counter initialization.");
-    return;
-  }
+  if (!pageKey) return;
 
   try {
-    // Check if counter already exists
-    const getUrl = `${COUNT_API_BASE}/get/${NAMESPACE}/${pageKey}`;
+    const encodedKey = encodeURIComponent(pageKey);
+    const getUrl = `${COUNT_API_BASE}/get/${encodedKey}`;
     const response = await fetch(getUrl);
-    const data = await response.json();
 
-    if (data?.value !== undefined) {
-      console.log(`Counter already exists for ${pageKey}: ${data.value}`);
-      visitData[pageKey] = data.value;
+    // Log raw text for debugging
+    const text = await response.text();
+    console.log(`Raw GET response for ${pageKey}:`, text);
+
+    if (!response.ok) {
+      // Counter doesn't exist → create it
+      console.log(`Counter not found for ${pageKey}, creating...`);
+      const createUrl = `${COUNT_API_BASE}/create?namespace=${NAMESPACE}&key=${encodedKey}&value=0`;
+      const createResponse = await fetch(createUrl);
+
+      // Log raw text for create
+      const createText = await createResponse.text();
+      console.log(`Raw CREATE response for ${pageKey}:`, createText);
+
+      const createData = JSON.parse(createText); // now parse safely
+      visitData[pageKey] = createData.value ?? 0;
       return;
     }
 
-    // If it doesn't exist, create a new one
-    console.log(`Creating new counter for ${pageKey}...`);
-    const createUrl = `${COUNT_API_BASE}/create?namespace=${NAMESPACE}&key=${pageKey}&value=0`;
-    const createResponse = await fetch(createUrl);
-    const createData = await createResponse.json();
-
-    console.log(`Counter created for ${pageKey}:`, createData);
-    visitData[pageKey] = createData.value ?? 0;
+    // Counter exists → parse normally
+    const data = JSON.parse(text);
+    console.log(`Parsed JSON for ${pageKey}:`, data);
+    visitData[pageKey] = data.value;
   } catch (err) {
     console.error("Error ensuring counter exists:", err);
   }
 }
 
-// --- Step 4: Increment visit count ---
 async function incrementVisit(pageKey) {
   if (!pageKey) return;
-  
+
   try {
-    const hitUrl = `${COUNT_API_BASE}/hit/${NAMESPACE}/${pageKey}`;
-    const res = await fetch(hitUrl);
-    const data = await res.json();
+    const encodedKey = encodeURIComponent(pageKey);
+    const hitUrl = `${COUNT_API_BASE}/hit/${encodedKey}`;
+    const response = await fetch(hitUrl);
 
-    console.log(data.value);
+    // Log raw text for debugging
+    const text = await response.text();
+    console.log(`Raw HIT response for ${pageKey}:`, text);
 
-    if (data?.value !== undefined) {
-      visitData[pageKey] = data.value;
-      console.log(`Visit counted for ${pageKey}. Total visits: ${data.value}`);
-    }
+    const data = JSON.parse(text);
+    visitData[pageKey] = data.value;
+    console.log(`Visit counted for ${pageKey}. Total visits: ${data.value}`);
   } catch (err) {
     console.error("Error incrementing visit count:", err);
   }
 }
-
 // Initialize counter and increment visit (if first visit this session)
 if (currentPage.shouldTrack) {
   ensureCounterExists(currentPage.key).then(() => {

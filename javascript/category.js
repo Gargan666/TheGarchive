@@ -1,8 +1,6 @@
 const stored = sessionStorage.getItem('currentCategory');
-if (stored) {
-    console.log("Current category from sessionStorage:", stored);
-  } else {
-    console.log("No category found in sessionStorage.");
+if (!stored) {
+    console.warn("No category found in sessionStorage.");
 }
 async function fetchCategories() {
   const URL = './content/categories.json';
@@ -19,9 +17,7 @@ async function fetchCategories() {
     // Find the current category object
     const currentCategory = currentSlug ? data.find(cat => cat.slug === currentSlug) : null;
 
-    if (currentCategory) {
-      console.log("Current category data:", currentCategory);
-    } else {
+    if (!currentCategory) {
       console.warn("No currentCategory found in sessionStorage or invalid slug.");
     }
 
@@ -93,7 +89,6 @@ async function fetchIndex() {
 
     if (!Array.isArray(data)) throw new Error("index.json must be an array");
 
-    console.log("Index.json contents:", data);
     return data;
   } catch (err) {
     console.error("Failed to load index.json:", err);
@@ -102,7 +97,6 @@ async function fetchIndex() {
 }
 
 async function renderCategory() {
-  console.log("Current category:", stored);
   const { allCategories, currentCategory } = await fetchCategories();
   const titleEl = document.getElementById('category-title');
 

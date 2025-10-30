@@ -9,11 +9,9 @@
       const slug = url.searchParams.get('slug');
       if (slug) {
         sessionStorage.setItem('currentSlug', slug);
-        console.log('Using slug from URL:', slug);
       } else {
         const storedSlug = sessionStorage.getItem('currentSlug');
         if (storedSlug) {
-          console.log('No URL slug. Removing stored slug.');
           sessionStorage.removeItem('currentSlug');
         }
       }
@@ -22,11 +20,9 @@
       const category = url.searchParams.get('category');
       if (category) {
         sessionStorage.setItem('currentCategory', category);
-        console.log('Using category from URL:', category);
       } else {
         const storedCategory = sessionStorage.getItem('currentCategory');
         if (storedCategory) {
-          console.log('No URL category. Removing stored category.');
           sessionStorage.removeItem('currentCategory');
         }
       }
