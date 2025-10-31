@@ -245,6 +245,11 @@ font-weight: bolder;
 font-size: larger;
 }
 
+#results p {
+  color: rgb(65, 99, 44);
+  text-decoration: underline 2px;
+}
+
 /* scrollbar */
 #custom-scrollbar {
   position: absolute;

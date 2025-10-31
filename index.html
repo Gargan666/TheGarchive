@@ -10,6 +10,25 @@
 
 <body>
 
+<p>Visits: <span id="count-test">Loading...</span></p>
+<script>
+  // You can customize these two variables:
+  const namespace = "mygithubpages";  // a unique namespace for your whole site
+  const key = "visits";               // the counter name
+
+  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+    .then(res => res.json())
+    .then(data => {
+      // Insert the counter value into the element
+      document.getElementById("count-test").textContent = data.value;
+    })
+    .catch(err => {
+      console.error("Error updating counter:", err);
+      document.getElementById("count-test").textContent = "Error";
+    });
+</script>
+
+
 <div id="immersion-box"></div>
 
 <!--title section-->

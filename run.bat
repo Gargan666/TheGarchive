@@ -1,7 +1,7 @@
 @ECHO OFF
 
 ECHO Starting server...
-start "" /min cmd /k "npx serve . -c serve.json"
+start "The Garchive - Static Server" /min cmd /k "npx serve . -c serve.json"
 
 ECHO Waiting for server to start...
 :waitLoop
