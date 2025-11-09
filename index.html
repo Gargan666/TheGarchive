@@ -10,28 +10,9 @@
 
 <body>
 
-<p>Visits: <span id="count-test">Loading...</span></p>
-<script>
-  // You can customize these two variables:
-  const namespace = "mygithubpages";  // a unique namespace for your whole site
-  const key = "visits";               // the counter name
-
-  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-    .then(res => res.json())
-    .then(data => {
-      // Insert the counter value into the element
-      document.getElementById("count-test").textContent = data.value;
-    })
-    .catch(err => {
-      console.error("Error updating counter:", err);
-      document.getElementById("count-test").textContent = "Error";
-    });
-</script>
-
-
 <div id="immersion-box"></div>
 
-<!--title section-->
+<!--HEADER-->
 <header style="text-align: center;">
         <a href="index.html" class="nogrowlink">
         <img src="images/garcon_archivetext_small.png" alt="Homepage" id="imglink">
@@ -53,12 +34,12 @@
         
 </header>
 
-<!--navigation-->
+<!--NAVIGATION-->
 <br>
 <div id="nav"></div>
 <br>
 
-<!--page body-->
+<!--PAGE BODY-->
 <div id="indexbody">
         <!--main text-->
         <section>
@@ -89,21 +70,19 @@
 
         <!--sidebar-->
         <aside>
-        <h2>Featured Pages</h2>
+        <h2>Most Visited Pages</h2>
         <i>The best of this terrible website</i>
-        <br>
-        <br>
-        <a href="#" onClick="window.open('hidden_pages/cage.html')">example link text</a>
-        <br>example link text
-        <br>example link text
+        <ul id="popular-pages">
+          <li>Loading...</li>
+          <li>Loading...</li>
+          <li>Loading...</li>
+        </ul>
         </aside>
 
         <footer id="footer"></footer>
 </div>
 
-</body>
-
-<!-- ----- SCRIPTS ----- -->
+<!--SCRIPTS-->
 <div>
 
     <!--object loader-->
@@ -123,17 +102,21 @@
     });
     </script>
 
-    <script src="javascript/autosave.js" defer></script>
-    <script src="javascript/gamestate.js" defer></script>
+    <script src="javascript/clientside/link_autosave.js" defer></script>
+    <script src="javascript/clientside/gamestate.js" defer></script>
+    <script src="javascript/pagevisits.js" defer></script>
 
-    <script src="javascript/titlebar.js" defer></script>
-    
-    <script src="javascript/searchEngine.js" defer></script>
-    <script src="javascript/searchUI.js" defer></script>
+    <script src="javascript/sitescripts/pop_list.js"></script>
+    <script src="javascript/sitescripts/titlebar.js" defer></script>
+
+    <script src="javascript/sitescripts/searchEngine.js" defer></script>
+    <script src="javascript/sitescripts/searchUI.js" defer></script>
     
     <!--sensitive features access request-->
-    <script src="javascript/immersion.js" defer></script>
+    <script src="javascript/sitescripts/consent_request.js" defer></script>
 
 </div>
+
+</body>
 
 </html>

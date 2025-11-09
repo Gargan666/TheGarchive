@@ -1,5 +1,6 @@
 @font-face { font-family: Gargling-fried; src: url("../images/fonts/Gargling-fried.ttf"); } 
 @font-face { font-family: Gargling-symbols; src: url("../images/fonts/Gargling-symbols.ttf"); } 
+@font-face { font-family: Gargling-nr1; src: url("../images/fonts/Gargling-nr1.ttf"); } 
 
 * { 
 image-rendering: -moz-crisp-edges;
@@ -13,7 +14,7 @@ font-family: "Gargling-fried";
 html {
 background-image: url('../images/background.png');
 background-repeat: repeat;
-background-attachment: local;
+background-attachment:fixed;
 
 animation: scrollBackground 70s linear infinite;
 }
@@ -120,7 +121,7 @@ a {
   background-repeat: no-repeat;
   background: none;
 }
-a:hover:not(.nogrowlink, .catEntBox, .navBtn) {
+a:hover:not(.nogrowlink, .catEntBox, .navBtn, .pop-link) {
   text-decoration: solid;
   color: rgb(226, 255, 183);
   font-size: 110%;
@@ -134,10 +135,6 @@ background-color: black;
 position: relative;
 user-select: none;
 font-weight: 100;
-}
-.entry-content h1 {
-font: 24px Gargling-fried;
-font-weight: normal;
 }
 .symbols {
   font-family: "Gargling-symbols";
@@ -342,6 +339,108 @@ button:hover:not(#gallery-prev-disabled, #gallery-next-disabled) {
   scale: 105%;
 }
 
+/* -------- home page stuff -------- */
+#popular-pages {
+display: flex;
+list-style: none;
+padding: 0;
+flex-direction: column;
+align-items: center;
+}
+.popular-item {
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.pop-link {
+background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+padding: 10px;
+height: 250px;
+width: 250px;
+
+white-space: nowrap;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+outline-style: solid;
+outline-width: 3px;
+outline-color:#6f6f6f;
+z-index: 2;
+}
+.pop-link:hover {
+scale: 1.1;
+outline-color:#3b3b3b;
+z-index: 4;
+}
+.pop-wrapper {
+line-height: 200%;
+}
+.pop-wrapper img {
+width: 80%;
+height: auto;
+}
+
+.pop-rank {
+margin: 0;
+z-index: 2;
+
+outline-style: solid;
+outline-width: 2px;
+outline-color: #595959;
+outline-offset: -1px;
+
+padding: 2px;
+background-size: contain;
+}
+#pop-rank-1 { 
+color: gold;
+font-family: "Gargling-nr1";
+
+position: absolute;
+transform: translate(-65px, -10px);
+
+background-image: linear-gradient(rgb(168, 161, 105), rgb(134, 134, 134));
+
+scale: 200%;
+
+animation: goldshine 2s ease-in-out infinite;
+}
+@keyframes goldshine {
+  0% {
+    scale: 200%;
+    color: rgb(255, 244, 184);
+  }
+  50% {
+    scale: 205%;
+    color: gold;
+  }
+  100% {
+    scale: 200%;
+    color: rgb(255, 244, 184);
+  }
+}
+#pop-rank-2 { 
+color: silver;
+
+position: absolute;
+transform: translate(-90px, -10px);
+
+background-image: linear-gradient(rgb(130, 130, 130), rgb(86, 86, 86));
+
+scale: 150%;
+}
+#pop-rank-3 { 
+color: rgb(221, 120, 42);
+
+position: absolute;
+transform: translate(-95px, -10px);
+
+background-image: linear-gradient(rgb(130, 130, 130), rgb(86, 86, 86));
+
+scale: 140%;
+}
+
 /* -------- ENTRIES -------- */
 #entry-content {
   flex: 3;
@@ -358,9 +457,6 @@ button:hover:not(#gallery-prev-disabled, #gallery-next-disabled) {
   padding: 20px;
   flex: 1;
 }
-.gallery-viewer {
-  text-align: center;
-}
 #gallery-prev,
 #gallery-title,
 #gallery-next {
@@ -370,6 +466,7 @@ button:hover:not(#gallery-prev-disabled, #gallery-next-disabled) {
 #gallery-prev,
 #gallery-next {
   font-family: "Gargling-symbols";
+  font-size: 25px;
   scale: 1.2;
 }
 #gallery-prev-disabled,

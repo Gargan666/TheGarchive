@@ -12,7 +12,7 @@
 
 <div id="immersion-box"></div>
 
-<!-- Title Section -->
+<!--HEADER-->
 <header>
         <a href="index.html" class="nogrowlink">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
@@ -33,12 +33,12 @@
         </canvas>
 </header>
 
-<!-- navigation -->
+<!--NAVIGATION-->
 <br>
 <div id="nav"></div>
 <br>
 
-<!-- Main category content -->
+<!--PAGE BODY-->
 <main id="app">
   <section id="subheader">
     <h1 id="category-title"></h1>
@@ -49,9 +49,7 @@
   <footer id="footer"></footer>
 </main>
 
-</body>
-
-<!-- External scripts -->
+<!--SCRIPTS-->
 <div>
 
     <!--object loader-->
@@ -70,23 +68,25 @@
     });
     </script>
 
-    <script src="javascript/autosave.js" defer></script>
-    <script src="javascript/gamestate.js" defer></script>
+    <script src="javascript/clientside/link_autosave.js" defer></script>
+    <script src="javascript/clientside/gamestate.js" defer></script>
     <script src="javascript/pagevisits.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js" defer></script>
-    <script src="javascript/category.js" defer></script>
-    <script src="javascript/text_obfuscate.js" defer></script>
+    <script src="javascript/sitescripts/category.js" defer></script>
+    <script src="javascript/effects/text_obfuscate.js" defer></script>
 
-    <script src="javascript/titlebar.js" defer></script>
+    <script src="javascript/sitescripts/titlebar.js" defer></script>
 
-    <script src="javascript/searchEngine.js" defer></script>
-    <script src="javascript/searchUI.js" defer></script>
+    <script src="javascript/sitescripts/searchEngine.js" defer></script>
+    <script src="javascript/sitescripts/searchUI.js" defer></script>
     
     <!--sensitive features access request-->
-    <script src="javascript/immersion.js" defer></script>
+    <script src="javascript/sitescripts/consent_request.js" defer></script>
     
 </div>
+
+</body>
 
 </html>

@@ -1,27 +1,11 @@
-// Include CountAPI-JS via CDN in HTML:
-// <script src="https://cdn.jsdelivr.net/npm/countapi-js/dist/index.umd.js"></script>
+const WORKER_URL = "https://garchive-manager.garman-gannefors.workers.dev";
+const visitData = {}; // local cache
 
-const NAMESPACE = "THEGARCHIVE"; // CountAPI namespace
-const visitData = {}; // Local storage for fetched counter values
-
-// Detect hosting environment
-const host = window.location.hostname;
-let isLocalhost = false;
-if (host === "localhost" || host === "127.0.0.1") {
-  console.log("Running on localhost");
-  isLocalhost = true;
-} else if (host.endsWith("github.io")) {
-  console.log("Running on GitHub Pages");
-} else {
-  console.log("Running on another host:", host);
-}
-
-console.log("THEGARCHIVE storage initialized.");
-
+// === Page detection ===
 const currentPage = {
-  type: null,    // "static" | "entry" | "category"
-  key: null,     // e.g. "static:index", "entry:slug", "category:name"
-  shouldTrack: false // true only if first visit this session
+  type: null,
+  key: null,
+  shouldTrack: false,
 };
 
 function detectCurrentPage() {
@@ -38,48 +22,46 @@ function detectCurrentPage() {
     currentPage.key = `category:${category}`;
     sessionStorage.setItem("currentCategory", category);
   } else {
-    const pathName = url.pathname.replace(/\/+$/, "");
-    const fileName = pathName.split("/").pop() || "index";
-    currentPage.type = "static";
-    currentPage.key = `static:${fileName}`;
+let pathName = url.pathname.replace(/\/+$/, ""); // remove trailing slash
+let fileName = pathName.split("/").pop() || "index";
+
+// Normalize default pages
+if (fileName === "" || fileName === "index.html") {
+  fileName = "index";
+}
+
+currentPage.type = "static";
+currentPage.key = `static:${fileName}`;
+
   }
 
-  console.log(`Detected page → Type: ${currentPage.type}, Key: ${currentPage.key}`);
+  // --- After setting currentPage.key ---
+const normalizedKey = currentPage.key; // already normalized
+let visitedPages = sessionStorage.getItem("visitedPages");
+visitedPages = visitedPages ? JSON.parse(visitedPages) : [];
 
-  // Session-safe visit tracking
-  const alreadyVisited = sessionStorage.getItem("visitedPageKey");
-  if (alreadyVisited === currentPage.key) {
-    console.log("Page already registered this session; will not count again.");
-    currentPage.shouldTrack = false;
-  } else {
-    sessionStorage.setItem("visitedPageKey", currentPage.key);
-    currentPage.shouldTrack = true;
-  }
+if (visitedPages.includes(normalizedKey)) {
+  currentPage.shouldTrack = false;
+} else {
+  visitedPages.push(normalizedKey);
+  sessionStorage.setItem("visitedPages", JSON.stringify(visitedPages));
+  currentPage.shouldTrack = true;
+}
+
 }
 
 detectCurrentPage();
 window.addEventListener("hashchange", detectCurrentPage);
 window.addEventListener("popstate", detectCurrentPage);
 
-// --- CountAPI helpers ---
+// === Cloudflare Worker helpers ===
 async function ensureCounterExists(pageKey) {
   if (!pageKey) return;
-  if (isLocalhost) {
-    // Mock counter locally for testing
-    visitData[pageKey] = visitData[pageKey] || 0;
-    return;
-  }
 
   try {
-    const exists = await countapi.get(NAMESPACE, pageKey).catch(() => null);
-    if (!exists) {
-      const created = await countapi.create(NAMESPACE, pageKey, 0);
-      visitData[pageKey] = created.value;
-      console.log(`Counter created for ${pageKey}:`, created.value);
-    } else {
-      visitData[pageKey] = exists.value;
-      console.log(`Counter exists for ${pageKey}:`, exists.value);
-    }
+    const res = await fetch(`${WORKER_URL}?page=${encodeURIComponent(pageKey)}`);
+    const data = await res.json();
+    visitData[pageKey] = data.value || 0;
   } catch (err) {
     console.error("Error ensuring counter exists:", err);
   }
@@ -88,24 +70,16 @@ async function ensureCounterExists(pageKey) {
 async function incrementVisit(pageKey) {
   if (!pageKey) return;
 
-  if (isLocalhost) {
-    // Local increment
-    visitData[pageKey] = (visitData[pageKey] || 0) + 1;
-    console.log(`Local visit counted for ${pageKey}. Total: ${visitData[pageKey]}`);
-    return;
-  }
-
   try {
-    const result = await countapi.hit(NAMESPACE, pageKey);
-    visitData[pageKey] = result.value;
-    console.log(`Visit counted for ${pageKey}. Total visits: ${result.value}`);
+    const res = await fetch(`${WORKER_URL}?page=${encodeURIComponent(pageKey)}&increment`);
+    const data = await res.json();
+    visitData[pageKey] = data.value;
   } catch (err) {
     console.error("Error incrementing visit count:", err);
   }
 }
 
-// Initialize counter and increment visit (if first visit this session)
+// === Initialize ===
 if (currentPage.shouldTrack) {
   ensureCounterExists(currentPage.key).then(() => incrementVisit(currentPage.key));
 }
-console.log();

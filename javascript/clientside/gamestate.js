@@ -59,7 +59,7 @@
   });
 })();
 document.addEventListener('keydown', (e) => {
-if (e.key === 'Backspace') __resetGameState();
+if (e.key === 'Backspace' && devMode) __resetGameState();
 });
 // 👂 Listen for updates from other tabs
 window.addEventListener('storage', (event) => {

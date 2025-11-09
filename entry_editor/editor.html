@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entry Editor</title>
+    <link rel="icon" href="images/garcon.ico" type="image/x-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="images/garcon.ico">
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+    <button id="export-btn">Export Markdown</button>
+
+    <div id="edit-menu">
+    <div class="field">
+        <label>Slug</label>
+        <input type="text" id="input-slug" />
+    </div>
+
+    <div class="field">
+        <label>Title</label>
+        <input type="text" id="input-title" />
+    </div>
+
+    <div class="field">
+        <label>Summary</label>
+        <textarea id="input-summary" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+    </div>
+    </div>
+
+    <main id="app">
+        <section id="entry-content">
+            <!-- Body text field -->
+            <textarea id="body-text-field" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        </section>
+
+        <aside id="entry-sidebar">
+            <!-- Image list editor -->
+            <h4>Images</h4>
+            <div id="image-list-editor">
+                <div id="image-list"></div>
+                <button id="add-image">+ Add Image</button>
+            </div>
+
+            <!-- Attribute list editor -->
+            <h4>Attributes</h4>
+            <div id="entry-attributes-editor">
+            </div>
+            <button id="add-attribute">+ Add Attribute</button>
+        </aside>
+
+        <footer>
+            <!-- Category list editor -->
+            <p id="entry-categories-editor"></p>
+            <button id="add-category">+ Add Category</button>
+        </footer>
+    </main>
+
+    <script src="editor.js"></script>
+</body>
+</html>

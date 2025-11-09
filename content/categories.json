@@ -10,18 +10,18 @@
     "description": "Lots of people are involved with this website and with Gargan. This page lists most of them."
   },
   {
+    "name": "Projects",
+    "slug": "projects",
+    "description": "Projects created, managed or simply worked on by Gargan and his associates."
+  },
+  {
+    "name": "Compositions",
+    "slug": "compositions",
+    "description": "Songs created by Gargan, either for an express purpose or just for fun."
+  },
+  {
     "name": "Places",
     "slug": "places",
     "description": "Places both fictional and real. Either way, these locations are important to either specific people or characters."
-  },
-  {
-    "name": "Artifacts",
-    "slug": "artifacts",
-    "description": "Special items or relics."
-  },
-  {
-    "name": "Test category",
-    "slug": "test",
-    "description": "Special items or relics."
   }
 ]
