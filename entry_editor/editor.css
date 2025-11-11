@@ -136,11 +136,16 @@ all: unset;
 width: fit-content;
 }
 
-#list-item {
+.list-item {
 width: fit-content;
 }
-footer {
+.list-item button {
+background-image: linear-gradient(red, darkred);
+width: 25px;
+height: 25px;
+padding-top: 10px;
 }
+
 
 #indexbody,
 #app {

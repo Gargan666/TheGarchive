@@ -55,7 +55,7 @@ function createListItem(container, type) {
     }
 
     let removeBtn = document.createElement('button');
-    removeBtn.textContent = 'Remove';
+    removeBtn.textContent = 'X';
     removeBtn.addEventListener('click', () => {
         itemDiv.remove();
         updateList(type);
@@ -121,7 +121,8 @@ function exportMarkdown() {
         `slug: '${entryData.slug}'
 ` +
         `categories:
-` + entryData.categories.map(cat => `  - ${cat}`).join('') +
+` + entryData.categories.map(cat => `  - ${cat}
+`).join('') +
         `summary: '${entryData.summary}'
 ` +
         `date: ''
