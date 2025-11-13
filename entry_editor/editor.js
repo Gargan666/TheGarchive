@@ -127,6 +127,8 @@ function exportMarkdown() {
 ` +
         `date: ''
 ` +
+        `writer: '${window.currentUser.displayName}'
+` +
         `---
 ___
 ` +

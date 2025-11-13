@@ -52,6 +52,12 @@
 <!--SCRIPTS-->
 <div>
 
+    <script src="javascript/sitescripts/searchEngine.js" defer></script>
+    <script src="javascript/sitescripts/searchUI.js" defer></script>
+    
+    <!--sensitive features access request-->
+    <script src="javascript/sitescripts/consent_request.js" defer></script>
+
     <!--object loader-->
     <script>
     async function loadHTML(id, file) {
@@ -79,11 +85,8 @@
 
     <script src="javascript/sitescripts/titlebar.js" defer></script>
 
-    <script src="javascript/sitescripts/searchEngine.js" defer></script>
-    <script src="javascript/sitescripts/searchUI.js" defer></script>
-    
-    <!--sensitive features access request-->
-    <script src="javascript/sitescripts/consent_request.js" defer></script>
+    <script type="module" src="javascript/auth.js" defer></script>
+    <script type="module" src="javascript/sitescripts/accountdisplay.js" defer></script>
     
 </div>
 

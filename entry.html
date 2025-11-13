@@ -46,9 +46,9 @@
     <!-- Sidebar -->
     <aside id="entry-sidebar">
     <div class="gallery-viewer">
-    <button id="gallery-prev">(</button>
+    <button id="gallery-prev" class="darkBtn">(</button>
     <h3 id="gallery-title"></h3>
-    <button id="gallery-next">)</button>
+    <button id="gallery-next" class="darkBtn">)</button>
     <img id="gallery-image" src="" alt="">
     </div>
     <ul id="entry-attributes"></ul>
@@ -68,6 +68,12 @@
 
 <!--SCRIPTS-->
 <div>
+
+    <script src="javascript/sitescripts/searchEngine.js" defer></script>
+    <script src="javascript/sitescripts/searchUI.js" defer></script>
+    
+    <!--sensitive features access request-->
+    <script src="javascript/sitescripts/consent_request.js" defer></script>
 
     <!--object loader-->
     <script>
@@ -96,11 +102,8 @@
 
     <script src="javascript/sitescripts/titlebar.js" defer></script>
 
-    <script src="javascript/sitescripts/searchEngine.js" defer></script>
-    <script src="javascript/sitescripts/searchUI.js" defer></script>
-    
-    <!--sensitive features access request-->
-    <script src="javascript/sitescripts/consent_request.js" defer></script>
+    <script type="module" src="javascript/auth.js" defer></script>
+    <script type="module" src="javascript/sitescripts/accountdisplay.js" defer></script>
     
 </div>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Firebase Test Login</title>
+</head>
+<body>
+  <h1>Firebase Test Login</h1>
+
+  <input id="username" placeholder="Username" />
+  <input id="email" placeholder="Email" />
+  <input id="password" placeholder="Password" type="password" />
+
+  <div style="margin-top: 10px;">
+    <button id="signupBtn">Sign Up</button>
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <!-- Load the Firebase authentication script -->
+  <script type="module" src="javascript/auth.js"></script>
+
+  <!-- Wait until the module is ready -->
+  <script type="module">
+    // ✅ Wait for the page and module to load
+    window.addEventListener("DOMContentLoaded", () => {
+      // Make sure global functions exist (auth.js attaches them to window)
+      const signupBtn = document.getElementById("signupBtn");
+      const loginBtn = document.getElementById("loginBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+
+      signupBtn.addEventListener("click", () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const username = document.getElementById("username").value.trim();
+        window.signup(email, password, username);
+      });
+
+      loginBtn.addEventListener("click", () => {
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        window.login(email, password);
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        window.logout();
+      });
+    });
+  </script>
+</body>
+</html>

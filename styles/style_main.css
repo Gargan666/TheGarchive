@@ -108,6 +108,34 @@ transition: 0.5s cubic-bezier(0.05, 0.1, 0.3, 1);
 filter:opacity(0.6);
 }
 
+/* -------- BUTTONS -------- */
+
+button {
+background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+border: none;
+
+transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+button:hover {
+background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
+scale: 105%;
+}
+
+.darkBtn {
+background-image: none;
+background-color: #888888;
+border: none;
+
+color: white;
+padding: 5px;
+
+vertical-align: middle;
+}
+.darkBtn:hover {
+background-image: none;
+background-color: #595959;
+}
+
 /* -------- TEXT -------- */
 i {
     color:gray;
@@ -121,7 +149,7 @@ a {
   background-repeat: no-repeat;
   background: none;
 }
-a:hover:not(.nogrowlink, .catEntBox, .navBtn, .pop-link) {
+a:hover:not(.nogrowlink, .catEntBox, .navBtn, .pop-link, .accountBtn) {
   text-decoration: solid;
   color: rgb(226, 255, 183);
   font-size: 110%;
@@ -148,7 +176,7 @@ ul {
   position: relative;
   width: fit-content;
 }
-/* input */
+
 input[type="text"] {
     padding: 10px;
     border: none;
@@ -162,27 +190,12 @@ input:focus {
   border: none;
   color: white;
 }
-/* button */
-#searchBtn,
-#gallery-prev,
-#gallery-next {
-    padding: 5px;
-    background-color: #888888;
-    color: white;
-    border: none;
-    vertical-align: middle;
-}
-#searchBtn:hover,
-#gallery-prev:hover,
-#gallery-next:hover {
-    background-color: #595959;
-}
 
 /* results */
 #results-wrapper {
   position: absolute;
-  max-width: 300px;
-  min-width: 227px;
+  min-width: 260px;
+  max-width: 400px;
   max-height: 360px;
 
   width: 227px;
@@ -275,24 +288,29 @@ font-size: larger;
 }
 
 /* -------- GENERAL LAYOUT -------- */
+/* nav */
 header {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
 }
-#nav {
+#nav, #accountMenu {
   display: flex;
   width: 100%;
   gap: 10px;
   flex-direction: row;
   white-space: nowrap;
+  align-items: center;
 }
+#accountMenu {
+  background-image: linear-gradient(rgb(157, 157, 157), rgb(86, 86, 86));
+  padding: 10px;
+  width: fit-content;
+  margin-left: auto;
+}
+
 .navBtn button {
   height: 37.5px;
-  width: 248.5px;
-  flex: 1;
-  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
-  border: none;
+  width: 200px;
 
-  font-family: Gargling-fried;
   line-height: 0;
   text-align: center;
   white-space: nowrap;
@@ -300,9 +318,23 @@ header {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.navBtn button:hover {
-  background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
+.accountBtn button {
+  height: 37.5px;
+  width: fit-content;
+
+  line-height: 0;
+  text-align: center;
+  white-space: nowrap;
+  padding-inline: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
+#profilePic {
+width: 50px;
+height: auto;
+}
+
+/* the rest */
 #indexbody,
 #app {
   display: flex;
@@ -330,13 +362,6 @@ footer {
   background-color:rgb(163, 163, 163);
   padding: 20px;
   flex: 100%;
-}
-
-button {
-  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-button:hover:not(#gallery-prev-disabled, #gallery-next-disabled) {
-  scale: 105%;
 }
 
 /* -------- home page stuff -------- */
@@ -460,21 +485,24 @@ scale: 140%;
 #gallery-prev,
 #gallery-title,
 #gallery-next {
-    display: inline-block; /* allows them to sit side by side */
-    vertical-align: middle; /* optional, aligns them nicely */
+    display: inline-block;
 }
 #gallery-prev,
 #gallery-next {
   font-family: "Gargling-symbols";
-  font-size: 25px;
-  scale: 1.2;
+
+  font-size: 20px;
+
+  padding-inline: 7px;
 }
 #gallery-prev-disabled,
 #gallery-next-disabled {
+  font-family: "Gargling-symbols";
+
   background-color: #cecece;
   color: gray;
-  font-family: "Gargling-symbols";
-  border: none;
+
+  padding-inline: 7px;
 }
 #gallery-prev-disabled:hover,
 #gallery-next-disabled:hover {
@@ -557,6 +585,44 @@ color: rgb(75, 75, 75);
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 120%;
+}
+
+/* -------- SETTINGS -------- */
+#settings-list {
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  padding: 20px;
+}
+#settings-header {
+  width: fit-content;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  padding: 20px;
+}
+input {
+all: unset;
+background-color:rgb(109, 109, 109);
+padding: 5px;
+word-wrap: break-word;
+}
+input::file-selector-button {
+  all: unset;
+
+  height: fit-content;
+  width: fit-content;
+  flex: 1;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+  padding: 5px;
+  margin: 5px;
+
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+input::file-selector-button:hover {
+  background-color:#444444;
+  background-image: none;
+  color: white;
+  scale: 105%;
 }
 
 /* misc */
