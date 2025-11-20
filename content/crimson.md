@@ -4,7 +4,8 @@ slug: crimson
 categories:
   - characters
 summary: Prisoner of the eternal dream.
-date: '2025-09-29'
+date: '2025-11-13'
+author: gargan
 ---
 ___
 images=

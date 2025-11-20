@@ -4,7 +4,8 @@
     "slug": "crimson",
     "file": "crimson.md",
     "summary": "Prisoner of the eternal dream.",
-    "date": "2025-09-29",
+    "date": "2025-11-13",
+    "author": "gargan",
     "categories": [
       "characters"
     ]
@@ -14,7 +15,8 @@
     "slug": "garganchar",
     "file": "gargan_character.md",
     "summary": "Gargan, the character",
-    "date": "2025-09-25",
+    "date": "2025-11-13",
+    "author": "gargan",
     "categories": [
       "characters"
     ]
@@ -24,7 +26,8 @@
     "slug": "garganirl",
     "file": "gargan_person.md",
     "summary": "Gargan, the real person",
-    "date": "2025-09-25",
+    "date": "2025-11-13",
+    "author": "gargan",
     "categories": [
       "people"
     ]
@@ -34,9 +37,43 @@
     "slug": "garry",
     "file": "garry.md",
     "summary": "Centa's online representation.",
-    "date": "2025-10-26",
+    "date": "2025-11-13",
+    "author": "garry",
     "categories": [
       "characters"
+    ]
+  },
+  {
+    "title": "Ron / R0-11",
+    "slug": "ronchar",
+    "file": "ronchar.md",
+    "summary": "Folder-Bot",
+    "date": "2025-11-16",
+    "author": "Ronnery",
+    "categories": [
+      "characters"
+    ]
+  },
+  {
+    "title": "Roncho",
+    "slug": "sonchoxronmakeout",
+    "file": "sonchoxronmakeout.md",
+    "summary": "Being of Admiration",
+    "date": "2025-11-16",
+    "author": "Ronnery",
+    "categories": [
+      "characters"
+    ]
+  },
+  {
+    "title": "Witness of L death",
+    "slug": "tuvacrymeme",
+    "file": "tuvacrymeme.md",
+    "summary": "wat is dis",
+    "date": "2025-11-13",
+    "author": "peak",
+    "categories": [
+      "people"
     ]
   }
 ]

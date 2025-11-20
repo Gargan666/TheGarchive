@@ -13,24 +13,49 @@
 <div id="immersion-box"></div>
 
 <!--HEADER-->
-<header style="text-align: center;">
+<header>
         <a href="index.html" class="nogrowlink">
-        <img src="images/garcon_archivetext_small.png" alt="Homepage" id="imglink">
+        <img src="images/garcon_archivetext_small.png" alt="Homepage" class="imglink" id="main-logo">
         </a>
+
+        <div id="top-links">
+          <a class="nogrowlink" href="https://discord.gg/Gd8f8xWF5H" target="_blank">
+            <button class="pixel-round">
+              <div>
+                Join the discord! <img class="icon" src="images/discord.png">
+              </div>
+            </button>
+          </a>
+          <a class="nogrowlink" href="https://www.youtube.com/@Gargan_guy" target="_blank">
+            <button class="pixel-round">
+              <div>
+                Visit my channel! <img class="icon" src="images/youtube.png">
+              </div>
+            </button>
+          </a>
+        </div>
 
         <br>
         <i>Everything there is to know about this strange specimen!</i>
+        
+        <div id="titlebar-box" style="height:50px;">
+        <div id="titlebar-container">
+        <div id="titlebar-filter"></div>
+        <canvas 
+            id="titlebar" 
+            height="50"
 
-        <canvas id="titlebar" height="50"
-            data-text="THE GARCHIVE |"
+            data-text="THE GARCHIVE | MAIN PAGE |"
             data-spacing="15"
             data-font-size="36"
-            data-y="40"
-            data-speed="1"
+            data-y="42"
+            data-speed="30"
             data-font-family="Gargling-fried"
-            data-color="gray"
+            data-color="rgb(97, 143, 69)"
             data-bgcolor="black">
         </canvas>
+        </div>
+        </div>
         
 </header>
 
@@ -66,6 +91,7 @@
         <br>
         <br>
         By the way, please do not use 'Inspect'. It ruins our secrecy, and if you want to be enthralled by our mystery, do not use it.
+
         </section>
 
         <!--sidebar-->

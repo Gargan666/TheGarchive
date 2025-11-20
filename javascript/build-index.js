@@ -37,6 +37,7 @@ function buildIndex() {
       file,
       summary: data.summary || "",
       date: lastModified,
+      author: data.author,
       categories: Array.isArray(data.categories) ? data.categories : []
     };
   });

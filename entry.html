@@ -17,20 +17,29 @@
         <a href="index.html" class="nogrowlink">
             <img src="images/garcon_archivetext_small.png" alt="Homepage"
                 style="width:200px; height:auto; vertical-align: middle;"
-                id="imglink">
+                class="imglink">
         </a>
         &nbsp;
         <i>Everything there is to know about this strange specimen!</i>
-        <canvas id="titlebar" height="25"
-            data-text="THE GARCHIVE |"
+
+        <div id="titlebar-box" style="height:50px;">
+        <div id="titlebar-container">
+        <div id="titlebar-filter"></div>
+        <canvas 
+            id="titlebar" 
+            height="50"
+
+            data-text="THE GARCHIVE | ENTRY |"
             data-spacing="15"
-            data-font-size="18"
-            data-y="23"
-            data-speed="1"
+            data-font-size="36"
+            data-y="42"
+            data-speed="30"
             data-font-family="Gargling-fried"
-            data-color="gray"
+            data-color="rgb(97, 143, 69)"
             data-bgcolor="black">
         </canvas>
+        </div>
+        </div>
 </header>
 
 <!--NAVIGATION-->
@@ -58,6 +67,8 @@
     <span id="entry-title"></span>
     <br>
     <i id="entry-date"></i>
+    <br>
+    <i id="entry-author"></i>
     <br>
     <p id="entry-categories"></p>
     <br>

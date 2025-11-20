@@ -9,6 +9,8 @@ image-rendering: -webkit-optimize-contrast;
 image-rendering: pixelated;
 -ms-interpolation-mode: nearest-neighbor;
 font-family: "Gargling-fried"; 
+
+scrollbar-width: none;      /* Firefox */
 }
 
 html {
@@ -21,10 +23,25 @@ animation: scrollBackground 70s linear infinite;
 body {
 cursor: url('../images/cursors/default.ico') 0 0, default;
 }
+
 .disabled {
   display: none;
   pointer-events: none;
 }
+
+.pixel-round {
+  padding: 16px;
+  border-radius: 50px;
+  border-style: solid;
+  border-image-source: url('../images/corners.png');
+  border-image-slice: 10 fill;
+  border-image-repeat: stretch;
+  border-image-width: 20px;
+  image-rendering: pixelated;
+  background-color: #000000; /* inside color */
+  color: #fff;
+}
+
 
 /* -------- CURSOR -------- */
 body.dragging {
@@ -100,14 +117,6 @@ opacity: 0.5;
   padding: 7px;
 }
 
-/* -------- IMAGES -------- */
-#imglink {
-transition: 0.5s cubic-bezier(0.05, 0.1, 0.3, 1);
-}
-#imglink:hover {
-filter:opacity(0.6);
-}
-
 /* -------- BUTTONS -------- */
 
 button {
@@ -156,7 +165,6 @@ a:hover:not(.nogrowlink, .catEntBox, .navBtn, .pop-link, .accountBtn) {
   line-height: 90%;
   padding: 5px;
   background-color: black;
-  background-size: 100%, 50%;
 }
 .obfuscated {
 background-color: black;
@@ -189,6 +197,16 @@ input:focus {
   background-image: linear-gradient(rgb(55, 55, 55), rgb(0, 0, 0));
   border: none;
   color: white;
+}
+
+#searchBtn, #burgerBtn {
+padding: 5px;
+height: 39px;
+width: 36px;
+}
+#searchBtn img, #burgerBtn img {
+width: 24px;
+height: auto;
 }
 
 /* results */
@@ -288,10 +306,74 @@ font-size: larger;
 }
 
 /* -------- GENERAL LAYOUT -------- */
-/* nav */
+/* header section + nav */
 header {
-    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(0, 0, 0), rgb(0, 0, 0));
+    background-image: linear-gradient(rgb(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgb(255, 255, 255), rgb(0, 0, 0));
+    text-align: center;
 }
+
+#main-logo {
+transform: translateX(110px);
+}
+
+#titlebar-box {
+position: relative;
+border-image-source: url('../images/corners_display.png');
+border-image-slice: 12 fill;
+border-image-repeat: stretch;
+border-image-width: 20px;
+padding: 16px;
+overflow: hidden;
+
+perspective: 300px;
+scale: 101%;
+}
+#titlebar-container {
+position: relative;
+overflow: hidden;
+transform: rotateX(4deg) translateY(-9px);
+scale: 98%;
+filter: blur(1px) contrast(110%) brightness(400%) saturate(80%);
+}
+
+#titlebar-filter {
+  background-image: url("../images/titlebar_filter.png");
+  background-repeat: repeat;
+  background-size: 16px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.imglink {
+transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.imglink:hover {
+filter: contrast(50%) brightness(200%);
+}
+
+#top-links {
+float: right;
+margin: 10px;
+width: 200px;
+height: fit-content;
+
+display: flex;
+flex-direction: column;
+}
+#top-links a {
+float: right;
+margin-bottom: 5px;
+width: fit-content;
+}
+#top-links a button {
+height: 50px;
+line-height: 0%;
+}
+#top-links a button div {
+transform: translateY(-12.5px);
+}
+
 #nav, #accountMenu {
   display: flex;
   width: 100%;
@@ -305,6 +387,12 @@ header {
   padding: 10px;
   width: fit-content;
   margin-left: auto;
+}
+
+.icon {
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
 }
 
 .navBtn button {
@@ -531,7 +619,7 @@ scale: 140%;
   outline-color: #595959;
   background-color: #888888;
 }
-#entry-date {
+#entry-date, #entry-author {
 color: rgb(75, 75, 75);
 }
 .similar-warn {
@@ -579,24 +667,42 @@ color: rgb(75, 75, 75);
   height: 90%;
   width: auto;
 }
-.catEntElements span {
+.catEntElements p {
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 120%;
+  margin: 0;
 }
 
 /* -------- SETTINGS -------- */
-#settings-list {
-  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
-  padding: 20px;
-}
 #settings-header {
   width: fit-content;
   background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
   padding: 20px;
 }
+
+#settings-menu-box {
+display: flex;
+}
+
+#settings-nav {
+margin-right: 10px;
+}
+
+#setting-list {
+display: flex;
+flex-direction: column;
+flex: 3;
+height: 590px;
+overflow-y: scroll;
+}
+
+.setting {
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
 input {
 all: unset;
 background-color:rgb(109, 109, 109);
@@ -633,4 +739,28 @@ input::file-selector-button:hover {
   to {
     background-position: -1000px 1000px; /* adjust based on image width */
   }
+}
+
+#game {
+  position: relative;
+  width: 600px;
+  height: 200px;
+  border: 2px solid black;
+  overflow: hidden;
+  background: white;
+}
+#dino {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  background: green;
+}
+.obstacle {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 50px;
+  background: red;
 }

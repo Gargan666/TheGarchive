@@ -1,5 +1,8 @@
 @ECHO OFF
 
+ECHO Updating entry list...
+node javascript/build-index.js
+
 ECHO Starting server...
 start "The Garchive - Static Server" /min cmd /k "npx serve . -c serve.json"
 

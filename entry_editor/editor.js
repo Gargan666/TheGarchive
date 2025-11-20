@@ -127,18 +127,20 @@ function exportMarkdown() {
 ` +
         `date: ''
 ` +
-        `writer: '${window.currentUser.displayName}'
+        `author: '${window.currentUser?.displayName || ''}'
 ` +
         `---
 ___
 ` +
         `images=
 [
-` + entryData.images.map(img => `  { "src": "${img.src}", "title": "${img.title}" }`).join('') + `]
+` + entryData.images.map(img => `  { "src": "${img.src}", "title": "${img.title}" }`).join(',\n') + `
+]
 ` +
         `attributes=
 [
-` + entryData.attributes.map(attr => `  ${JSON.stringify(attr)}`).join('') + `]
+` + entryData.attributes.map(attr => `  ${JSON.stringify(attr)}`).join(',\n') + `
+]
 ___
 ` +
         `${bodyWithBr}`;

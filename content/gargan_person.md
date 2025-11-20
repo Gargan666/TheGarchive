@@ -4,7 +4,8 @@ slug: garganirl
 categories:
   - people
 summary: 'Gargan, the real person'
-date: '2025-09-25'
+date: '2025-11-13'
+author: gargan
 ---
 ___
 images=

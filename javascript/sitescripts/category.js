@@ -141,7 +141,7 @@ async function renderCategory() {
     const section = document.createElement('section');
     const dark = document.createElement('div');
     dark.className = 'catEntElements';
-    const span = document.createElement('span');
+    const span = document.createElement('p');
     const br = document.createElement('br');
     span.textContent = item.title;
 

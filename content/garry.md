@@ -4,7 +4,8 @@ slug: garry
 categories:
   - characters
 summary: Centa's online representation.
-date: '2025-10-26'
+date: '2025-11-13'
+author: garry
 ---
 ___
 images=

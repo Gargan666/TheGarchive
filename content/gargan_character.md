@@ -4,7 +4,8 @@ slug: garganchar
 categories:
   - characters
 summary: 'Gargan, the character'
-date: '2025-09-25'
+date: '2025-11-13'
+author: gargan
 ---
 ___
 images=

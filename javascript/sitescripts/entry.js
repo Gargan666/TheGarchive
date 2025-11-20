@@ -123,6 +123,7 @@ async function initEntry() {
   const titleEl = document.getElementById('entry-title');
   const summaryEl = document.getElementById('entry-summary');
   const dateEl = document.getElementById('entry-date');
+  const authorEl = document.getElementById('entry-author');
   const categoriesEl = document.getElementById('entry-categories');
   const contentEl = document.getElementById('entry-content');
 
@@ -137,21 +138,8 @@ async function initEntry() {
   if (titleEl) titleEl.textContent = item.title || '';
   if (summaryEl) summaryEl.textContent = item.summary || '';
   if (dateEl) dateEl.textContent = 'Last Updated: ' + (item.date || '');
+  if (authorEl) authorEl.textContent = `Written by: ${item.author}`;
   if (contentEl) contentEl.innerHTML = safe;
-
-  // --- Automatically save slug for any links in markdown content ---
-  if (contentEl) {
-    contentEl.addEventListener('click', e => {
-      const link = e.target.closest('a[href*="slug="]');
-      if (!link) return;
-      const url = new URL(link.href, window.location.origin);
-      const linkSlug = url.searchParams.get('slug');
-      if (linkSlug) {
-        sessionStorage.setItem('currentSlug', linkSlug);
-        console.log("Saved slug from markdown link:", linkSlug);
-      }
-    });
-  }
 
   // --- Sidebar: Gallery and Attributes ---
   const galleryImageEl = document.getElementById('gallery-image');
