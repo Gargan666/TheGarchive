@@ -372,21 +372,54 @@ line-height: 0%;
 }
 #top-links a button div {
 transform: translateY(-12.5px);
+vertical-align: middle;
 }
 
-#nav, #accountMenu {
+#nav {
   display: flex;
   width: 100%;
+  height: 25px;
   gap: 10px;
   flex-direction: row;
   white-space: nowrap;
   align-items: center;
 }
 #accountMenu {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  white-space: nowrap;
+
   background-image: linear-gradient(rgb(157, 157, 157), rgb(86, 86, 86));
   padding: 10px;
+  padding-left: 5px;
+  padding-right: 0;
   width: fit-content;
-  margin-left: auto;
+  height: 25px;
+  z-index: 1000;
+}
+#profilePic {
+width: 50px;
+height: 50px;
+transform: translate(-1px,-22px);
+padding: 10px;
+background-color: #3b3b3b;
+outline-width: 2px;
+outline-color: #000000;
+outline-style: solid;
+}
+#name {
+padding: 5px;
+background-color: #3b3b3b;
+color: white;
+height: 20px;
+transform: translate(15px, -2.5px);
+z-index: 2;
+width: 125px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow-x: hidden;
+text-align: center;
 }
 
 .icon {
@@ -408,7 +441,8 @@ transform: translateY(-12.5px);
 }
 .accountBtn button {
   height: 37.5px;
-  width: fit-content;
+  width: 134px;
+  transform: translateY(-6px);
 
   line-height: 0;
   text-align: center;
@@ -416,10 +450,6 @@ transform: translateY(-12.5px);
   padding-inline: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-#profilePic {
-width: 50px;
-height: auto;
 }
 
 /* the rest */
@@ -741,6 +771,7 @@ input::file-selector-button:hover {
   }
 }
 
+
 #game {
   position: relative;
   width: 600px;
@@ -749,6 +780,28 @@ input::file-selector-button:hover {
   overflow: hidden;
   background: white;
 }
+#oBox {
+width: 100%;
+height: 100%;
+}
+
+#chargebg {
+position: absolute;
+transform: translate(5px, -195px);
+background-color: rgb(0, 0, 0);
+width: 25px;
+height: 190px;
+}
+#charge {
+position: absolute;
+transform: translate(10px, -190px);
+background-color: red;
+width: 15px;
+height: 180px;
+clip-path: inset(180px 0 0 0);
+}
+
+
 #dino {
   position: absolute;
   bottom: 0;
@@ -757,6 +810,10 @@ input::file-selector-button:hover {
   height: 50px;
   background: green;
 }
+#player {
+  transform: scale(2, 2) translateY(-15px)
+}
+
 .obstacle {
   position: absolute;
   bottom: 0;
@@ -764,3 +821,19 @@ input::file-selector-button:hover {
   height: 50px;
   background: red;
 }
+
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-size: auto 100%;
+  pointer-events: none;
+}
+.layer1 { background-image: url('/images/dino/bg/1.png'); }
+.layer2 { background-image: url('/images/dino/bg/2.png'); }
+.layer3 { background-image: url('/images/dino/bg/3.png'); }
