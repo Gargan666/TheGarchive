@@ -1,5 +1,16 @@
 [
   {
+    "title": "Centa",
+    "slug": "centa",
+    "file": "centa.md",
+    "summary": "",
+    "date": "2025-12-01",
+    "author": "Centa",
+    "categories": [
+      "people"
+    ]
+  },
+  {
     "title": "Crimson",
     "slug": "crimson",
     "file": "crimson.md",
@@ -26,7 +37,7 @@
     "slug": "garganirl",
     "file": "gargan_person.md",
     "summary": "Gargan, the real person",
-    "date": "2025-11-13",
+    "date": "2025-12-04",
     "author": "gargan",
     "categories": [
       "people"
@@ -37,8 +48,8 @@
     "slug": "garry",
     "file": "garry.md",
     "summary": "Centa's online representation.",
-    "date": "2025-11-13",
-    "author": "garry",
+    "date": "2025-12-01",
+    "author": "Centa",
     "categories": [
       "characters"
     ]
@@ -48,8 +59,19 @@
     "slug": "ronchar",
     "file": "ronchar.md",
     "summary": "Folder-Bot",
-    "date": "2025-11-16",
+    "date": "2025-12-08",
     "author": "Ronnery",
+    "categories": [
+      "characters"
+    ]
+  },
+  {
+    "title": "Soncho",
+    "slug": "soncho",
+    "file": "soncho.md",
+    "summary": "oh my goodness evil sonic",
+    "date": "2025-12-08",
+    "author": "gargan",
     "categories": [
       "characters"
     ]

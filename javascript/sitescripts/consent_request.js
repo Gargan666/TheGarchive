@@ -4,11 +4,12 @@ async function immersionConsent() {
   const textbox = document.getElementById("immersion-query");
   const boxbg = document.getElementById("immersion-bg");
 
-  if (__gameState.immersionConsent == null) {
-  
-  // Global state object (create it if it doesn't exist)
+  if (__gameState == null) {
+      // Global state object (create it if it doesn't exist)
   window.__gameState = window.__gameState || {};
   __gameState.immersionConsent = null; // default: no choice yet
+  }
+  if (__gameState.immersionConsent == null) {
 
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");

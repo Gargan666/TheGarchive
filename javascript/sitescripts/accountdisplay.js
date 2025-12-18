@@ -10,6 +10,7 @@ let accountMenu;
   }
 
   const username = window.currentUser.displayName || "User";
+  const pfp = window.currentUser.photoURL
 
   // Fetch the predesigned HTML snippet
   try {
@@ -30,9 +31,7 @@ let accountMenu;
 
     const picElem = accountMenu.querySelector("#profilePic");
     if (picElem) {
-    // Prefer localStorage copy if available
-    const storedPic = localStorage.getItem("profilePic");
-    picElem.src = storedPic || user.photoURL || "default-avatar.png";
+    picElem.src = pfp || "default-avatar.png";
     }
 
   } catch (error) {

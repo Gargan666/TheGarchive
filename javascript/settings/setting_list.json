@@ -1,0 +1,28 @@
+[
+  {
+    "name": "picture",
+    "label": "Profile Picture",
+    "mode": "store",
+    "script": "profilepicture.js"
+  },
+  {
+    "name": "privacy",
+    "label": "Privacy Level",
+    "mode": "multistate",
+    "states": ["off", "medium", "strict"],
+    "script": "privacy.js"
+  },
+  {
+    "name": "fullscreen",
+    "label": "Fullscreen",
+    "mode": "bool",
+    "script": "fullscreen.js"
+  },
+  {
+    "name": "zoom",
+    "label": "Zoom Level",
+    "mode": "value",
+    "between": [25, 500],
+    "script": "zoom.js"
+  }
+]

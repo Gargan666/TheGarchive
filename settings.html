@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<div class="siteBG" id="bg1" data-speed="0.2"></div>
+<div class="siteBG" id="bg2" data-speed="0.5"></div>
+<script src="./javascript/sitescripts/background.js" defer></script>
+
 <head>
   <meta charset="UTF-8">
   <title>The Garchive</title>
@@ -18,56 +23,24 @@
   </aside>
 
   <div id="setting-list">
-  <!-- Username -->
-  <div class="setting">
-  
-  <h2>Username</h2>
-
-  <p>Current username: <span id="usernameDisplay"></span></p>
-  </div>
-
-  <!-- Profile picture -->
-  <div class="setting">
-  
-  <h2>Profile picture</h2>
-
-  <!-- Display current profile picture -->
-  <div>
-    <p>Current profile picture:</p>
-    <img id="currentProfilePic" src="" alt="Profile Picture" /> <br>
-    <div style="max-width: 300px; max-height: 300px;">
-    <img id="cropPreview" style="display:none;">
-    </div>
-  </div>
-  <!-- Upload new profile picture -->
-  <div>
-    <label for="profilePicInput">Upload new profile picture:</label>
-    <input type="file" id="profilePicInput" accept="image/*" />
-    <button id="cropBtn">Crop & Save</button>
-  </div>
-  </div>
-
-  <!-- Account management -->
-  <div class="setting">
-
-    <h2>Account management</h2>
-
-    <button id="logoutBtn">Log out</button>
-
-  </div>
 
   </div>
 
   </main>
-
-
-
-
+</body>
 
   <link  href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
 
   <script type="module" src="javascript/auth.js"></script>
-  <script type="module" src="javascript/settings.js"></script>
-</body>
+  <script type="module" src="javascript/settings/image_processor.js"></script>
+  
+  <script type="module">
+  import { loadSettingsSchema } from "./javascript/settings/settings_registry.js";
+  import { buildSettingsUI } from "./javascript/settings/settings_UI.js";
+
+  await loadSettingsSchema("./javascript/settings/setting_list.json");
+  await buildSettingsUI("setting-list");
+  </script>
+
 </html>

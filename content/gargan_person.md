@@ -4,7 +4,7 @@ slug: garganirl
 categories:
   - people
 summary: 'Gargan, the real person'
-date: '2025-11-13'
+date: '2025-12-04'
 author: gargan
 ---
 ___
@@ -59,3 +59,12 @@ He has been coding for a while. Around 2019 was when he started.
 He isn't an excellent or an extremely talented programmer, but he is enough. 
 <br>
 He does use a lot of AI help, though.
+<br>
+<br>
+<br>
+<br>
+Up into the valley <br>
+Down to the shore <br>
+Right you walk, not once not twice <br>
+Only when you take that last step <br>
+That is the key <br>

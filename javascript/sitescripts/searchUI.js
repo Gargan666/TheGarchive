@@ -119,13 +119,14 @@ function initSearchUI() {
     grouped[type].forEach((p) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
+      a.classList.add('nogrowlink')
       a.href = p.url;
       a.textContent = p.name;
       li.appendChild(a);
       frag.appendChild(li);
     });
 
-    // Optional: add a little spacing between groups
+    // add a little spacing between groups
     if (index < Object.keys(grouped).length - 1) {
       const spacer = document.createElement("div");
       spacer.classList.add("result-space");

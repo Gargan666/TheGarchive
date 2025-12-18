@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<div class="siteBG" id="bg1" data-speed="0.2"></div>
+<div class="siteBG" id="bg2" data-speed="0.5"></div>
+<script src="./javascript/sitescripts/background.js" defer></script>
+
 <head>
     <meta charset="UTF-8">
     <title>The Garchive</title>
@@ -74,19 +78,35 @@
     <br>
     <div id="footer"> 
     </div>
+    <br>
+    <a id="edit-button" href="#">Edit this page</a>
     </footer>
 </main>
 
 <!--SCRIPTS-->
 <div>
 
-    <script src="javascript/sitescripts/searchEngine.js" defer></script>
-    <script src="javascript/sitescripts/searchUI.js" defer></script>
+    <script src="javascript/sitescripts/searchEngine.js"></script>
+    <script src="javascript/sitescripts/searchUI.js"></script>
     
     <!--sensitive features access request-->
-    <script src="javascript/sitescripts/consent_request.js" defer></script>
+    <script src="javascript/sitescripts/consent_request.js"></script>
 
-    <!--object loader-->
+    <script src="javascript/clientside/link_autosave.js" defer></script>
+    <script src="javascript/clientside/gamestate.js" defer></script>
+    <script src="javascript/pagevisits.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js" defer></script>
+    <script src="javascript/sitescripts/entry.js" defer></script>
+    <script src="javascript/effects/text_obfuscate.js" defer></script>
+
+    <script src="javascript/sitescripts/titlebar.js"></script>
+
+    <script type="module" src="javascript/auth.js" defer></script>
+    <script type="module" src="javascript/sitescripts/accountdisplay.js" defer></script>
+
+        <!--object loader-->
     <script>
     async function loadHTML(id, file) {
       const res = await fetch(file);
@@ -101,20 +121,6 @@
       immersionConsent();
     });
     </script>
-
-    <script src="javascript/clientside/link_autosave.js" defer></script>
-    <script src="javascript/clientside/gamestate.js" defer></script>
-    <script src="javascript/pagevisits.js" defer></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js" defer></script>
-    <script src="javascript/sitescripts/entry.js" defer></script>
-    <script src="javascript/effects/text_obfuscate.js" defer></script>
-
-    <script src="javascript/sitescripts/titlebar.js" defer></script>
-
-    <script type="module" src="javascript/auth.js" defer></script>
-    <script type="module" src="javascript/sitescripts/accountdisplay.js" defer></script>
     
 </div>
 

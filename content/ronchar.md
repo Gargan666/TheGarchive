@@ -4,7 +4,7 @@ slug: ronchar
 categories:
   - characters
 summary: Folder-Bot
-date: '2025-11-16'
+date: '2025-12-08'
 author: Ronnery
 ---
 ___
@@ -22,7 +22,9 @@ attributes=
   {"Species":"Machina"}
 ]
 ___
-Ron, as stated in both Gargan (character) and Garry's entries is both an online representation and a standalone character (though it usually leans towards a representation)
+# Ron
+
+Ron, similarly to many other original characters on this wiki, is both an online representation and a standalone character (though it usually leans towards a representation)
 
 # DETAILS
 
