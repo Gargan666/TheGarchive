@@ -26,4 +26,4 @@ ___
 # Header (headers split the paragraphs, any text below a header will be a new line and paragraph)
 
 Text is written in plain (automatically made into a paragraph)
-<br> (extra tags like line break (<br>) work. write <br> to move to the next line.)
+<br> (tags like line break (<br>) work. write <br> to move to the next line.)
