@@ -103,6 +103,8 @@ the user has visited the current query string. If they haven't (each page starts
 page's visits counter on the Cloudflare storage before marking the page as visited in session storage.
 
 
+
+
 - ACCOUNTS and SETTINGS -
 
 I recently implemented this crude system to allow for people to create their own accounts on the system, and even more recently
@@ -126,7 +128,7 @@ I've yet to find out if this size cap applies only to each individual attribute 
 If the size cap is for all attributes combined, I may have to either compress the image further or simply remove profile pictures.
 
 The storage isn't actually a JSON or a file in that sense, but the structure is similar. 
-Though if it were a JSON it would look like this:
+If it were a JSON it would look like this:
 
 {
     "example.person@gmail.com": {
@@ -147,6 +149,15 @@ It consists of these scripts:
 javascript/settings/settings_UI.js
 javascript/settings/settings_registry.js
 
+
+
+
+
+
+- THE GAME -
+In the game I made, to be completely honest, I forgot entirely to actually add something to happen when you lose.
+To check when you actually lose, just do inspect and check the console. 
+It should notify you when you lose the game (aka when you hit an obstacle.)
 
 
 - SCRIPTS YOU SHOULD IGNORE -

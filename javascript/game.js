@@ -359,7 +359,7 @@ if (!window.gameLoopStarted) {
       }
 
       if (o.x < 90 && o.x > 20 && y < 40) {
-        //console.log("COLLISION!");
+        console.log("COLLISION!");
       }
     }
 
