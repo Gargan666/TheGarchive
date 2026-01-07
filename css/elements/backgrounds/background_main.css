@@ -1,0 +1,27 @@
+.siteBG {
+  --offset: 0px;
+  position: fixed;
+  width: 110vw;
+  height: 1000%;
+  transform: translate(-10vw, calc(-20vh - var(--offset)));
+
+  z-index: -2;
+  background-repeat: repeat;
+  background-size: auto;
+}
+#bg1 { 
+  background-image: url('../../../images/background_l1.png'); 
+  animation: scrollBackground 30s linear infinite; 
+}
+#bg2 { 
+  background-image: url('../../../images/background_l2.png'); 
+  animation: scrollBackground 15s linear infinite; 
+}
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200px 200px; /* adjust based on image width */
+  }
+}

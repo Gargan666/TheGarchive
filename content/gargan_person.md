@@ -4,7 +4,7 @@ slug: garganirl
 categories:
   - people
 summary: 'Gargan, the real person'
-date: '2025-12-04'
+date: '2026-01-07'
 author: gargan
 ---
 ___
@@ -47,7 +47,7 @@ He uses this skill mostly to draw silly and/or ridicilous things, however, somet
 <br>
 Music -
 <br>
-Since 2020, his main goal has been getting good at composing music. You can be the judge on if he has succeeded yet.
+§r§Since 2020§, his main goal has been getting good at composing music. You can be the judge on if he has succeeded yet.
 <br>
 There will be many examples of his music on this wiki. We don't need to put it here.
 <br>

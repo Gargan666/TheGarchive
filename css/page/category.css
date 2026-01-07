@@ -1,0 +1,45 @@
+#category-entries {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+#category-entries a section {
+  background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109)); 
+  padding: 20px;
+  flex: none;
+  height: 200px;
+  width: 200px;
+}
+.catEntBox {
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline-style: solid;
+  outline-width: 0px;
+  outline-color: #000000;
+  z-index: 1;
+}
+.catEntBox:hover {
+  scale: 1.1;
+  outline-width: 3px;
+  z-index: 10;
+}
+.catEntElements {
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+  height: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+}
+.catEntElements img {
+  height: 180px;
+  width: 180px;
+  transform: translate(5px, -15px)
+}
+.catEntElements p {
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+}

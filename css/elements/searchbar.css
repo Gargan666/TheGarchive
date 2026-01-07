@@ -1,0 +1,132 @@
+#search-container {
+  position: relative;
+  width: fit-content;
+  flex: 0 0 auto;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: none;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+    font-family: "Gargling-fried";
+    vertical-align: middle;
+}
+input:focus {
+  outline: none;
+  background-image: linear-gradient(rgb(55, 55, 55), rgb(0, 0, 0));
+  border: none;
+  color: white;
+}
+
+#searchBtn, #burgerBtn {
+padding: 5px;
+height: 39px;
+width: 36px;
+}
+#searchBtn img, #burgerBtn img {
+width: 24px;
+height: auto;
+}
+
+/* results */
+#results-wrapper {
+  position: absolute;
+  min-width: 100%;
+  max-width: 400px;
+  max-height: 360px;
+
+  width: 227px;
+  height: 360px;
+
+  align-content: center;
+  overflow: hidden;
+  padding-bottom: 40px;
+  padding-top: 10px;
+
+  background-color: black;
+  color: white;
+
+  z-index: 1000;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: #888;
+
+  resize: both;
+}
+#results-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  pointer-events: none; /* ensures it's not interactive */
+  box-shadow: inset 0 0 0 20px black; /* creates a 10px “cutoff edge” */
+}
+#results-wrapper:empty {
+resize: none;
+padding-block: 0px;
+height: 0;
+}
+
+#results {
+  max-width: 90%;
+  height: inherit;
+
+  font-size: 16px;
+  list-style: square;
+  overflow-y: scroll;
+
+  /* Hide native scrollbars */
+  scrollbar-width: none;      /* Firefox */
+}
+
+#results li {
+  list-style-position: inside; /* ensures bullets are inside the box */
+  text-overflow: ellipsis;    /* add "..." at cutoff */
+  white-space: nowrap;        /* keep the text on one line */
+  overflow: hidden show;           /* hide overflow beyond width */
+  color: rgb(97, 143, 69);
+  transform: translateX(-20px);
+}
+#results li:first-child {
+font-weight: bolder;
+font-size: larger;
+}
+#results li a:hover {
+  text-decoration: solid;
+  color: rgb(226, 255, 183);
+  font-size: 110%;
+  line-height: 90%;
+  padding: 5px;
+}
+
+#results p {
+  color: rgb(65, 99, 44);
+  text-decoration: underline 2px;
+}
+
+/* scrollbar */
+#custom-scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #111;
+}
+#thumb {
+  transition: scale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 50%;
+  left: 25%;
+  background-color: #888;
+  border-radius: 0;   /* blocky rectangle */
+  position: absolute;
+  top: 0;
+}
+#thumb:hover {
+  cursor: url('../images/cursors/mover.ico') 13 4, grab;
+}
+#thumb.dragging {
+  scale: 110%;
+  background-color: #ffffff;
+  cursor: url('../images/cursors/grabber.ico') 13 4, grabbing;
+}

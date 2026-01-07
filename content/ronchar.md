@@ -4,7 +4,7 @@ slug: ronchar
 categories:
   - characters
 summary: Folder-Bot
-date: '2025-12-08'
+date: '2026-01-05'
 author: Ronnery
 ---
 ___

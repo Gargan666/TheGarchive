@@ -108,7 +108,9 @@ const animator = new SpriteAnimator(
   {
     run: Array.from({ length: 8 }, (_, i) => `./images/dino/player/Run${i + 1}.png`),
     jumpStart: ["./images/dino/player/Jump1.png", "./images/dino/player/Jump2.png"],
-    jumpLand: ["./images/dino/player/Jump3.png", "./images/dino/player/Jump3.png", "./images/dino/player/Jump4.png"]
+    jumpLand: ["./images/dino/player/Jump3.png", "./images/dino/player/Jump3.png", "./images/dino/player/Jump4.png"],
+    eye: ["./images/dino/player/stare.png"],
+    key: ["./images/dino/key.png"]
   },
   12
 );
@@ -172,6 +174,11 @@ let obstacleSpawnTimer = 0;
 let nextObstacleTime = Math.random() * 5 + 1;
 
 let TRUTH = false;
+let blackoutApplied = false;
+let blackoutOverlay = null;
+let playerOriginalParent = null;
+let playerOriginalNextSibling = null;
+
 let corruptionLevel = 0;
 let corruptionBlocks = [];
 
@@ -183,6 +190,7 @@ if (!window.gameInputAttached) {
 
   document.addEventListener("mousedown", () => { 
     if (paused) return;
+    if (TRUTH) return;
     if (!jumping) {
       charging = true; 
       playerImg.classList.add("charging");
@@ -191,6 +199,7 @@ if (!window.gameInputAttached) {
 
   document.addEventListener("mouseup", () => {
     if (paused) return;
+    if (TRUTH) return;
     if (jumping) return;
     vel = 300 + 100 * jumpForce;
     jumpForce = 0;
@@ -358,7 +367,7 @@ if (!window.gameLoopStarted) {
         continue;
       }
 
-      if (o.x < 90 && o.x > 20 && y < 40) {
+      if (o.x < 90 && o.x > 20 && y < 40 && !TRUTH) {
         console.log("COLLISION!");
       }
     }
@@ -376,41 +385,78 @@ if (!window.gameLoopStarted) {
 if (TRUTH) {
 
   corruptionLevel += dt * 0.15; // slow buildup
-  corruptionLevel = Math.min(1, corruptionLevel);
+  corruptionLevel = Math.min(2, corruptionLevel);
 
   const c = corruptionLevel;
 
   // ---- Spawn black blocks under the whole game ----
-  if (Math.random() < c * 1) {
-    spawnCorruptionBlock();
-  }
 
   gameBox.style.background = `rgb(${255 - c * 255}, ${255 - c * 255}, ${255 - c * 255}) `;
-  // ---- Distort parallax layers ----
-  for (const layer of parallaxLayers) {
-    if (Math.random() < c * 0.03) {
-      const ox = (Math.random() - 0.5) * 250 * c;
-      const oy = (Math.random() - 0.5) * 140 * c;
+  const doc = document.body;
+  doc.style.filter = `saturate(${1 + c}) contrast(${1 + c})`;
 
-      layer.el.style.transform = `translate(${ox}px, ${oy}px)`;
-      layer.el.style.overflow = "hidden";
-      layer.el.style.filter = `brightness(${1 - c}) saturate(${1 - c}) contrast(${1 + c})`;
-      layer.el.style.opacity = `${1-c}`;
-      
-    }
+  if (c > 0.5) {
+    animator.play("eye", true)
   }
+if (c >= 1 && !blackoutApplied) {
+  blackoutApplied = true;
 
-  // ---- Distort obstacles ----
-  for (const o of obstacles) {
-    if (Math.random() < c * 0.05) {
-      const ox = (Math.random() - 0.5) * 180 * c;
-      const oy = (Math.random() - 0.5) * 100 * c;
+  // Normalize document margins
+  document.documentElement.style.margin = "0";
+  document.documentElement.style.padding = "0";
+  document.body.style.margin = "0";
+  document.body.style.padding = "0";
 
-      o.style.transform = `translate(${ox}px, ${oy}px)`;
-      o.style.overflow = "hidden";
-      o.style.filter = `brightness(${1 - c}) saturate(${1 - c}) contrast(${1 + c})`;
-    }
-  }
+  // Create overlay
+  blackoutOverlay = document.createElement("div");
+  Object.assign(blackoutOverlay.style, {
+    position: "fixed",
+    inset: "0",
+    background: "black",
+    zIndex: "2147483646",
+    pointerEvents: "all"
+  });
+  document.documentElement.appendChild(blackoutOverlay);
+
+  // Capture exact screen position
+  const rect = playerImg.getBoundingClientRect();
+
+  // Re-parent player
+  playerOriginalParent = playerImg.parentNode;
+  playerOriginalNextSibling = playerImg.nextSibling;
+  document.documentElement.appendChild(playerImg);
+
+  // Lock player to viewport without drift
+  Object.assign(playerImg.style, {
+    position: "fixed",
+    left: `${rect.left + 15.5}px`,
+    top: `${rect.top + 68}px`,
+    margin: "0",
+    bottom: "auto",
+    filter: "saturate(2) contrast(2)",
+    right: "auto",
+    zIndex: "2147483647",
+    pointerEvents: "all"
+  });
+}
+if (c >= 1.5) {
+  playerImg.style.opacity = "0";
+}
+if (c >= 1.95) {
+  animator.play("key", true);
+  playerImg.style.transform = "scale(0.1) translate(-8000px, -3600px)";
+}
+if (c >= 2) {
+  playerImg.style.opacity = "1";
+  playerImg.addEventListener("click", () => {
+  if (corruptionLevel < 1) return; // safety gate
+
+  // Navigate to a new page
+  window.location.href = "hidden_pages/cage.html";
+});
+}
+
+
 
 } else {
 
@@ -429,6 +475,14 @@ if (TRUTH) {
 
   for (const b of corruptionBlocks) b.remove();
   corruptionBlocks = [];
+
+  blackoutApplied = false;
+
+const allElements = gameBox.querySelectorAll("*");
+allElements.forEach(el => {
+  el.style.filter = "";
+});
+
 }
 
 

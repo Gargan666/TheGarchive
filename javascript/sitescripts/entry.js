@@ -5,12 +5,10 @@ function getQueryParam(name) {
 function saveSlug(slug) {
   if (slug) {
     sessionStorage.setItem('currentSlug', slug);
-    console.log("Saved slug to sessionStorage:", slug);
   }
 }
 function getStoredSlug() {
   const stored = sessionStorage.getItem('currentSlug');
-  console.log("Stored slug from sessionStorage:", stored);
   return stored;
 }
 // ---------------------- Fetch index.json ----------------------
@@ -151,6 +149,16 @@ async function initEntry() {
   let currentImageIndex = 0;
   const images = meta.images || [];
   const attributes = meta.attributes || [];
+
+  const editBtn = document.getElementById('edit-button');
+if (editBtn) {
+  editBtn.addEventListener('click', () => {
+    sessionStorage.setItem('editorMarkdown', mdText);
+    sessionStorage.setItem('editorSlug', slug);
+    console.log(sessionStorage);
+    window.location.href = 'entry_editor/editor.html';
+  });
+}
 
   function renderGallery() {
     if (!images.length) {

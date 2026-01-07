@@ -1,0 +1,12 @@
+body.dragging {
+  cursor: url('../../images/cursors/grabber.ico') 13 4, grabbing;
+}
+a, button {
+    cursor: url('../../images/cursors/pointer.ico') 13 4, pointer;
+}
+input, textarea {
+    cursor: url('../../images/cursors/text.ico') 0 13, text;
+}
+.wait-area {
+    cursor: url('cursors/wait-cursor.png'), wait;
+}

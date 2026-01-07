@@ -1,0 +1,346 @@
+* { 
+image-rendering: -moz-crisp-edges;
+image-rendering: -o-crisp-edges;
+image-rendering: -webkit-optimize-contrast;
+image-rendering: pixelated;
+-ms-interpolation-mode: nearest-neighbor;
+font-family: "Gargling-fried"; 
+
+scrollbar-width: none;      /* Firefox */
+}
+
+html {
+padding: none;
+background-image: url('../images/background.png');
+background-repeat: repeat;
+background-attachment:fixed;
+}
+
+body {
+overflow-x: hidden;
+cursor: url('../images/cursors/default.ico') 0 0, default;
+}
+
+.disabled {
+  display: none;
+  pointer-events: none;
+}
+
+.pixel-round {
+  padding: 16px;
+  border-radius: 50px;
+  border-style: solid;
+  border-image-source: url('../images/corners.png');
+  border-image-slice: 10 fill;
+  border-image-repeat: stretch;
+  border-image-width: 20px;
+  image-rendering: pixelated;
+  background-color: #000000; /* inside color */
+  color: #fff;
+  image-rendering: pixelated;
+}
+
+/* -------- POPUPS -------- */
+.popup-fade {
+  animation: popup-fade 2s ease-in forwards
+}
+@keyframes popup-fade {
+  0% {
+    width: fit-content;
+    height: fit-content;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
+#immersion-query {
+  height: 400px;
+  width: 550px;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(19, 19, 19));
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000000;
+
+  padding: 10px;
+  text-align: center;
+  align-content: center;
+  color: white;
+}
+#immersion-query ul {
+  color: white;
+  list-style-position: inside;
+  align-content: center;
+  padding: 0;
+}
+#immersion-bg {
+background-color: black;
+position: fixed;
+width: 110vw;
+height: 110vh;
+z-index: 99999;
+transform: translate(-10px,-10px);
+opacity: 0.5;
+}
+
+#yesBtn, #noBtn {
+  border-radius: 0;
+  border-style: none;
+  width: 30%;
+  height: 50px;
+  font-size: 32px;
+  padding: 7px;
+}
+
+/* -------- BUTTONS -------- */
+
+button {
+background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+border: none;
+
+transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+button:hover {
+background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
+scale: 105%;
+}
+
+.darkBtn {
+background-image: none;
+background-color: #888888;
+border: none;
+
+color: white;
+padding: 5px;
+
+vertical-align: middle;
+}
+.darkBtn:hover {
+background-image: none;
+background-color: #595959;
+}
+
+/* -------- TEXT -------- */
+i {
+    color:gray;
+
+}
+a {
+  text-decoration: none;
+  color: rgb(97, 143, 69);
+  line-height: 100%;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-repeat: no-repeat;
+  background: none;
+}
+a:hover:not(.nogrowlink, .catEntBox, .navBtn, .pop-link, .accountBtn) {
+  text-decoration: solid;
+  color: rgb(226, 255, 183);
+  font-size: 110%;
+  line-height: 90%;
+  padding: 5px;
+  background-color: black;
+}
+.obfuscated {
+background-color: black;
+position: relative;
+user-select: none;
+font-weight: 100;
+}
+.symbols {
+  font-family: "Gargling-symbols";
+}
+ul {
+  list-style: square;
+}
+
+/* -------- GENERAL LAYOUT -------- */
+/* header section + nav */
+header {
+    background-image: linear-gradient(rgb(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgb(255, 255, 255), rgb(0, 0, 0));
+    text-align: center;
+}
+
+#main-logo {
+transform: translateX(110px);
+}
+
+#titlebar-box {
+position: relative;
+border-image-source: url('../images/corners_display.png');
+border-image-slice: 12 fill;
+border-image-repeat: stretch;
+border-image-width: 20px;
+padding: 16px;
+overflow: hidden;
+
+perspective: 300px;
+scale: 101%;
+}
+#titlebar-container {
+position: relative;
+overflow: hidden;
+transform: rotateX(4deg) translateY(-9px);
+scale: 98%;
+filter: blur(1px) contrast(110%) brightness(400%) saturate(80%);
+}
+
+#titlebar-filter {
+  background-image: url("../images/titlebar_filter.png");
+  background-repeat: repeat;
+  background-size: 16px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.imglink {
+transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.imglink:hover {
+filter: contrast(50%) brightness(200%);
+}
+
+#top-links {
+float: right;
+margin: 10px;
+width: 200px;
+height: fit-content;
+
+display: flex;
+flex-direction: column;
+}
+#top-links a {
+float: right;
+margin-bottom: 5px;
+width: fit-content;
+}
+#top-links a button {
+height: 50px;
+line-height: 0%;
+}
+#top-links a button div {
+transform: translateY(-12.5px);
+vertical-align: middle;
+}
+
+#nav {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  gap: 10px;
+  flex-direction: row;
+  white-space: nowrap;
+  align-items: center;
+}
+#accountMenu {
+  flex: 0 0 auto;
+
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  white-space: nowrap;
+
+  background-image: linear-gradient(rgb(157, 157, 157), rgb(86, 86, 86));
+  padding: 10px;
+  padding-left: 5px;
+  padding-right: 0;
+  width: fit-content;
+  height: 25px;
+  z-index: 1000;
+}
+#profilePic {
+width: 50px;
+height: 50px;
+transform: translate(-1px,-22px);
+padding: 10px;
+background-color: #3b3b3b;
+outline-width: 2px;
+outline-color: #000000;
+outline-style: solid;
+}
+#name {
+padding: 5px;
+background-color: #3b3b3b;
+color: white;
+height: 20px;
+transform: translate(15px, -2.5px);
+z-index: 2;
+width: 125px;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow-x: hidden;
+text-align: center;
+}
+
+.icon {
+  width: 40px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.navBtn {
+  flex: 1;
+  height: 100%;
+}
+.navBtn button {
+  width: 100%;
+  height: 100%;
+
+  line-height: 0;
+  text-align: center;
+  white-space: nowrap;
+  padding-inline: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.accountBtn button {
+  height: 37.5px;
+  width: 134px;
+  transform: translateY(-6px);
+
+  line-height: 0;
+  text-align: center;
+  white-space: nowrap;
+  padding-inline: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* the rest */
+#indexbody,
+#app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+}
+section {
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(163, 163, 163));
+  padding: 20px;
+  flex: 3;
+}
+#subheader {
+  flex: 100%;
+}
+aside {
+  background-image: linear-gradient(rgb(206, 206, 206), rgb(109, 109, 109));
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+}
+footer {
+  float: center;
+  background-color:rgb(163, 163, 163);
+  padding: 20px;
+  flex: 100%;
+}

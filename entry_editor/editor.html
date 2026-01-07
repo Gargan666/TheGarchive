@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<div class="siteBG" id="bg1" data-speed="0.2"></div>
+<div class="siteBG" id="bg2" data-speed="0.5"></div>
+<script src="../javascript/sitescripts/background.js" defer></script>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entry Editor</title>
     <link rel="icon" href="images/garcon.ico" type="image/x-icon">
     <link rel="shortcut icon" type="image/x-icon" href="images/garcon.ico">
-    <link rel="stylesheet" href="editor.css">
+
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/cursor_states.css">
+    <link rel="stylesheet" href="../css/elements/backgrounds/background_main.css">
+
+    <link rel="stylesheet" href="../css/page/editor.css">
 </head>
 <body>
 
+<div id="technical">
+    <div id="load-btns">
     <button id="export-btn">Export Markdown</button>
+    <button id="import-btn">Import Markdown</button>
+    <input type="file" id="import-file" accept=".md" class="disabled">
+    </div>
 
     <div id="edit-menu">
     <div class="field">
-        <label>Slug (link identifier)</label>
+        <label>Link</label>
         <input type="text" id="input-slug" />
     </div>
 
@@ -25,9 +40,11 @@
 
     <div class="field">
         <label>Summary</label>
-        <textarea id="input-summary" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <textarea id="input-summary"></textarea>
     </div>
     </div>
+</div>
+
 
     <main id="app">
         <section id="entry-content">
@@ -56,8 +73,10 @@
             <button id="add-category">+ Add Category</button>
         </footer>
     </main>
+<br><br><br><br><br><br>
 
     <script type="module" src="../javascript/auth.js" defer></script>
-    <script src="editor.js"></script>
+    <script src="editor_core.js"></script>
+    <script src="editor_UI.js"></script>
 </body>
 </html>

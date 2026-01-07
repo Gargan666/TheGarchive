@@ -20,8 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.style.zIndex = "9999";
   overlay.style.cursor = "pointer";
 
-  overlay.title = "Click anywhere to enter immersion mode";
-
   // Attach click handler
   overlay.addEventListener("click", async () => {
     try {
