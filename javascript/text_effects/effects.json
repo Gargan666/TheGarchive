@@ -1,26 +1,26 @@
 {
   "r": {
-    "className": "effect-red"
+    "classes": ["effect-red"],
+    "breakup": "full"
   },
   "s": {
-    "className": "effect-shake"
+    "classes": ["effect-shake"],
+    "breakup": "letter"
   },
   "l": {
-    "className": "effect-loud"
+    "classes": ["effect-loud"],
+    "breakup": "full"
   },
   "w": {
-    "className": "effect-wave"
+    "classes": ["effect-wave"],
+    "breakup": "letter"
   },
-
-
-
-
-  
   "g": {
-    "className": "effect-glitch"
+    "classes": ["effect-glitch"],
+    "breakup": "letter"
   },
-  
   "o": {
-    "className": "THE-ORACLE"
+    "classes": ["THE-ORACLE"],
+    "breakup": "full"
   }
 }

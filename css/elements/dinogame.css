@@ -6,7 +6,7 @@
   overflow: hidden;
   background: white;
   transform-origin: top left;
-  z-index: 10000000;
+  z-index: 10;
 }
 #oBox {
 width: 100%;

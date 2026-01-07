@@ -22,9 +22,7 @@ function getStoredSlug() {
 // ---------- Fetching ----------
 
 async function fetchIndex() {
-  const INDEX_URL = "./content/index.json";
-
-  const res = await fetch(INDEX_URL, { cache: "no-store" });
+  const res = await fetch("./content/index.json", { cache: "no-store" });
   if (!res.ok) {
     throw new Error(`Failed to fetch index.json (HTTP ${res.status})`);
   }
@@ -47,7 +45,7 @@ async function fetchMarkdown(file) {
 
 // ---------- Markdown processing ----------
 
-// Remove YAML frontmatter (--- ... ---)
+// Strip YAML frontmatter (--- ... ---)
 function stripFrontmatter(mdText) {
   const lines = mdText.split(/\r?\n/);
 
@@ -101,14 +99,10 @@ function extractMiddleMatter(mdText) {
 
   const body = mdText.replace(middleRegex, "").trim();
 
-  return {
-    body,
-    gallery,
-    attributes
-  };
+  return { body, gallery, attributes };
 }
 
-// ---------- Public API ----------
+// ---------- Core loader ----------
 
 async function loadEntry() {
   const slug = getQueryParam("slug") || getStoredSlug();
@@ -125,18 +119,12 @@ async function loadEntry() {
     throw new Error(`Entry not found for slug: ${slug}`);
   }
 
-  // Full, untouched markdown file
   const fullMarkdown = await fetchMarkdown(item.file);
-
-  // Process for page content
   const withoutFrontmatter = stripFrontmatter(fullMarkdown);
-  const {
-    body: mainContent,
-    gallery,
-    attributes
-  } = extractMiddleMatter(withoutFrontmatter);
+  const { body, gallery, attributes } =
+    extractMiddleMatter(withoutFrontmatter);
 
-  const entryData = {
+  return {
     slug,
 
     meta: {
@@ -148,22 +136,20 @@ async function loadEntry() {
         : []
     },
 
-    gallery: Array.isArray(gallery) ? [...gallery] : [],
-    attributes: Array.isArray(attributes) ? [...attributes] : [],
+    gallery: [...gallery],
+    attributes: [...attributes],
 
     content: {
-      markdown: mainContent
+      markdown: body
     },
 
     file: {
       markdown: fullMarkdown
     }
   };
-
-  return entryData;
 }
 
-// ---------- Init (testing only) ----------
+// ---------- Init + TEMP bootstrap ----------
 
 async function initEntryLoad() {
   try {
@@ -174,8 +160,17 @@ async function initEntryLoad() {
       JSON.parse(JSON.stringify(entry))
     );
 
-    // Temporary global exposure for next steps
-    window.entryData = entry;
+window.entryData = entry;
+
+// TEMP orchestration until a page controller exists
+if (window.entryRender) {
+  window.entryRender.renderEntry(entry);
+}
+
+if (window.entryUI) {
+  window.entryUI.initEntryUI(entry);
+}
+
 
   } catch (err) {
     console.error("[entryLoad] Failed:", err.message);
